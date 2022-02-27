@@ -29,12 +29,12 @@ $user = Yii::$app->user->identity;
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                        <img src="/backend/web/img/user-logo.jpg" class="user-image" alt="User Image" />
                         <span class="hidden-xs"><?= $user->username ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                            <img src="/backend/web/img/user-logo.jpg" class="img-circle" alt="User Image" />
                             <p>
                                 <?= $user->username ?>
                             </p>
