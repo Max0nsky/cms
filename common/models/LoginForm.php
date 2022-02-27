@@ -59,7 +59,26 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
+        return false;
+    }
+
+    /**
+     * Logs in a admin role user using the provided username and password.
+     *
+     * @return bool whether the user is logged in successfully
+     */
+    public function loginAdmin()
+    {
+        if ($this->validate()) {
+
+            $user = $this->getUser();
+
+            if (\Yii::$app->authManager->checkAccess($user->id, 'canAdmin')) {
+                return Yii::$app->user->login($user, $this->rememberMe ? 3600 * 24 * 30 : 0);
+            }
+        }
+
         return false;
     }
 
