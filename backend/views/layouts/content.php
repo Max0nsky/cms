@@ -1,4 +1,5 @@
 <?php
+
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 
@@ -27,6 +28,7 @@ use dmstr\widgets\Alert;
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]
         ) ?>
+
     </section>
 
     <section class="content">
@@ -34,14 +36,6 @@ use dmstr\widgets\Alert;
         <?= $content ?>
     </section>
 </div>
-
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Version</b> 2.0
-    </div>
-    <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-</footer>
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
@@ -154,12 +148,8 @@ use dmstr\widgets\Alert;
                     </a>
                 </li>
             </ul>
-            <!-- /.control-sidebar-menu -->
 
         </div>
-        <!-- /.tab-pane -->
-
-        <!-- Settings tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
                 <h3 class="control-sidebar-heading">General Settings</h3>
@@ -167,56 +157,51 @@ use dmstr\widgets\Alert;
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Report panel usage
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
 
                     <p>
                         Some information about this general settings option
                     </p>
                 </div>
-                <!-- /.form-group -->
 
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Allow mail redirect
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
 
                     <p>
                         Other sets of options are available
                     </p>
                 </div>
-                <!-- /.form-group -->
 
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Expose author name in posts
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
 
                     <p>
                         Allow the user to show his name in blog posts
                     </p>
                 </div>
-                <!-- /.form-group -->
 
                 <h3 class="control-sidebar-heading">Chat Settings</h3>
 
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Show me as online
-                        <input type="checkbox" class="pull-right" checked/>
+                        <input type="checkbox" class="pull-right" checked />
                     </label>
                 </div>
-                <!-- /.form-group -->
 
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         Turn off notifications
-                        <input type="checkbox" class="pull-right"/>
+                        <input type="checkbox" class="pull-right" />
                     </label>
                 </div>
-                <!-- /.form-group -->
 
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
@@ -224,12 +209,8 @@ use dmstr\widgets\Alert;
                         <a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
                     </label>
                 </div>
-                <!-- /.form-group -->
             </form>
         </div>
-        <!-- /.tab-pane -->
     </div>
-</aside><!-- /.control-sidebar -->
-<!-- Add the sidebar's background. This div must be placed
-     immediately after the control sidebar -->
+</aside>
 <div class='control-sidebar-bg'></div>
