@@ -12,6 +12,8 @@ use yii\web\Response;
 /**
  * Site controller
  */
+
+
 class SiteController extends Controller
 {
     /**
@@ -24,7 +26,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'settings', 'settings-site'],
+                        'actions' => ['index', 'settings'],
                         'allow' => true,
                         'roles' => ['canAdmin'],
                     ],
@@ -56,6 +58,8 @@ class SiteController extends Controller
      */
     public function actions()
     {
+        $this->enableCsrfValidation = false;
+
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',

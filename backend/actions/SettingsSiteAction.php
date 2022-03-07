@@ -8,6 +8,7 @@ class SettingsSiteAction extends \pheme\settings\SettingsAction
 {
     public function run()
     {
+
         $model = new $this->modelClass();
         if ($this->scenario) {
             $model->setScenario($this->scenario);
@@ -18,7 +19,7 @@ class SettingsSiteAction extends \pheme\settings\SettingsAction
                     Yii::$app->settings->set($key, $value, $model->formName(), 'string');
                 }
 
-                Yii::$app->getSession()->addFlash('success', 'Настройки сайта сохранены');
+                Yii::$app->getSession()->addFlash('success', 'Настройки изменены');
             }
         }
 

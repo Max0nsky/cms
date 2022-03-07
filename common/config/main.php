@@ -37,4 +37,16 @@ return [
             'sourceLanguage' => 'en'
         ],
     ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['@'],
+            'root' => [
+                'baseUrl' => '',
+                'basePath' => '@filesImage',
+                'path' => '/files/images/upload',
+                'name' => 'Files'
+            ],
+        ]
+    ],
 ];

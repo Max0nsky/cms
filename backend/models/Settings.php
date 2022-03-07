@@ -65,7 +65,7 @@ class Settings extends Model
         return [
             'email' => 'E-mail для уведомления',
             'phone' => 'Телефон',
-            'text_about' => 'Блок текста',
+            'text_about' => 'Блок информации',
 
             'h1' => 'H1',
             'title' => 'Title',
