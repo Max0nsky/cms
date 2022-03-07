@@ -23,23 +23,14 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
 
 <body class="hold-transition skin-blue sidebar-mini">
     <?php $this->beginBody() ?>
+    
     <div class="wrapper">
 
-        <?= $this->render(
-            'header',
-            ['directoryAsset' => $directoryAsset]
-        ) ?>
+        <?= $this->render('header', compact('directoryAsset')) ?>
 
-        <?= $this->render(
-            'left',
-            ['directoryAsset' => $directoryAsset]
-        )
-        ?>
+        <?= $this->render('left', compact('directoryAsset')) ?>
 
-        <?= $this->render(
-            'content',
-            ['content' => $content, 'directoryAsset' => $directoryAsset]
-        ) ?>
+        <?= $this->render('content', compact('content', 'directoryAsset')) ?>
 
     </div>
 

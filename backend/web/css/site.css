@@ -102,3 +102,7 @@ a.desc:after {
 .navbar-nav {
     flex-direction: row;
 }
+
+.save-btn {
+    margin: 10px !important;
+}

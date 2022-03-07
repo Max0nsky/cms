@@ -24,7 +24,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => ['index', 'settings', 'settings-site'],
                         'allow' => true,
                         'roles' => ['canAdmin'],
                     ],
@@ -59,6 +59,12 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+                'layout' => 'main-login',
+            ],
+            'settings' => [
+                'class' => 'backend\actions\SettingsSiteAction',
+                'modelClass' => 'backend\models\Settings',
+                'viewName' => 'site-settings'
             ],
         ];
     }

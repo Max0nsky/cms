@@ -1,5 +1,6 @@
 <?php
 return [
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -9,8 +10,15 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'frontendCache' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => Yii::getAlias('@frontend') . '/runtime/cache'
+        ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+        ],
+        'settings' => [
+            'class' => 'pheme\settings\components\Settings'
         ],
     ],
     'modules' => [
@@ -23,6 +31,10 @@ return [
             'graphicsLibrary' => 'GD', //but really its better to use 'Imagick' 
             'placeHolderPath' => '@app/../files/images/placeHolder.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
             'imageCompressionQuality' => 100, // Optional. Default value is 85.
+        ],
+        'settings' => [
+            'class' => 'pheme\settings\Module',
+            'sourceLanguage' => 'en'
         ],
     ],
 ];
