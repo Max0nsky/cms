@@ -47,7 +47,5 @@ $fieldOptions2 = [
 
         <?php ActiveForm::end(); ?>
 
-        <!-- <a href="#">Забыли пароль?</a><br> -->
-
     </div>
 </div>

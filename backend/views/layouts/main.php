@@ -32,6 +32,8 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
 
         <?= $this->render('content', compact('content', 'directoryAsset')) ?>
 
+        <?= $this->render('modals', compact('directoryAsset')) ?>
+
     </div>
 
     <?php $this->endBody() ?>
