@@ -170,3 +170,9 @@ a.desc:after {
   padding: 15px 42px 0 0;
 }
 /*---------- checkbox ----------*/
+.navbar-static-top {
+    background: linear-gradient(45deg, #828fd4, #9ba6e7cb, #828fd4);
+}
+.dropdown-menu .user-header {
+    background: linear-gradient(45deg, #6b7ac2, #919acfe1, #919acfe1);
+}
