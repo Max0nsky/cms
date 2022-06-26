@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="page-index">
 
     <p>
-        <?= Html::a('Добавить новую', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать страницу', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= GridVieW::widget([

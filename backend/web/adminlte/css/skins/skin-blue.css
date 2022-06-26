@@ -3,7 +3,7 @@
  * ----------
  */
 .skin-blue .main-header .navbar {
-  background-color: #3c8dbc;
+  background-color: #5967a9;
 }
 .skin-blue .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -29,7 +29,7 @@
   color: #fff;
 }
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
-  background-color: #6b7ac2;
+  background-color: #5967a9;
 }
 @media (max-width: 767px) {
   .skin-blue .main-header .navbar .dropdown-menu li.divider {
@@ -39,11 +39,11 @@
     color: #fff;
   }
   .skin-blue .main-header .navbar .dropdown-menu li a:hover {
-    background: #6b7ac2;
+    background: #5967a9;
   }
 }
 .skin-blue .main-header .logo {
-  background-color: #6b7ac2;
+  background-color: #5967a9;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
@@ -51,7 +51,7 @@
   background-color: #357ca5;
 }
 .skin-blue .main-header li.user-header {
-  background-color: #3c8dbc;
+  background-color: #5967a9;
 }
 .skin-blue .content-header {
   background: transparent;
@@ -59,15 +59,15 @@
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
-  background-color: #222d32;
+  background-color: #22242a;
 }
 .skin-blue .user-panel > .info,
 .skin-blue .user-panel > .info > a {
   color: #fff;
 }
 .skin-blue .sidebar-menu > li.header {
-  color: #4b646f;
-  background: #1a2226;
+  color: #727585;
+  background: #19191e;
 }
 .skin-blue .sidebar-menu > li > a {
   border-left: 3px solid transparent;
@@ -76,14 +76,14 @@
 .skin-blue .sidebar-menu > li.active > a,
 .skin-blue .sidebar-menu > li.menu-open > a {
   color: #ffffff;
-  background: #1e282c;
+  background: #2d3140;
 }
 .skin-blue .sidebar-menu > li.active > a {
-  border-left-color: #3c8dbc;
+  border-left-color: #5967a9;
 }
 .skin-blue .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
-  background: #2c3b41;
+  background: #2c3141a3;
 }
 .skin-blue .sidebar a {
   color: #b8c7ce;
@@ -92,7 +92,7 @@
   text-decoration: none;
 }
 .skin-blue .sidebar-menu .treeview-menu > li > a {
-  color: #8aa4af;
+  color: #9ca7bf;
 }
 .skin-blue .sidebar-menu .treeview-menu > li.active > a,
 .skin-blue .sidebar-menu .treeview-menu > li > a:hover {
@@ -133,7 +133,7 @@
   border-bottom-left-radius: 0;
 }
 .skin-blue.layout-top-nav .main-header > .logo {
-  background-color: #3c8dbc;
+  background-color: #5967a9;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }

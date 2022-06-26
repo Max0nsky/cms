@@ -127,7 +127,7 @@ a.desc:after {
 }
 
 .cust-checkbox label:hover {
-  color: #3c8dbc;
+  color: #929ee6f1;
 }
 
 .cust-checkbox__box {
@@ -135,7 +135,7 @@ a.desc:after {
   display: inline-block;
   width: 40px;
   height: 20px;
-  border: 2px solid #3c8dbc;
+  border: 2px solid #929ee6f1;
   border-radius: 10px;
   background: #fff;
   transition: all 0.3s;
@@ -150,14 +150,14 @@ a.desc:after {
   display: block;
   width: 10px;
   height: 10px;
-  border: 5px solid #3c8dbc;
+  border: 5px solid #929ee6f1;
   border-radius: 50%;
   transition: all 0.3s;
 }
 
 .cust-checkbox [type="checkbox"]:checked + .cust-checkbox__box,
 .cust-checkbox [type="radio"]:checked + .cust-checkbox__box {
-  background: #3c8dbc;
+  background: #929ee6f1;
 }
 
 .cust-checkbox [type="checkbox"]:checked + .cust-checkbox__box:before,
@@ -171,8 +171,21 @@ a.desc:after {
 }
 /*---------- checkbox ----------*/
 .navbar-static-top {
-    background: linear-gradient(45deg, #828fd4, #9ba6e7cb, #828fd4);
+    background: linear-gradient(45deg, #828ec4, #9ba6e7cb, #5c6cbe);
 }
 .dropdown-menu .user-header {
     background: linear-gradient(45deg, #6b7ac2, #919acfe1, #919acfe1);
+}
+
+.main-header .logo {
+    background: linear-gradient(45deg, #7b87c7, #7b87c7);
+}
+
+.kv-grid-container {
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: #d9d9d966;
+    border-top-color: #6d92d5e0;
+    background-color: #f1f1f1;
 }
