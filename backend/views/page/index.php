@@ -1,10 +1,11 @@
 <?php
 
+use common\components\Support\Support;
 use common\models\Page;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 
 $this->title = 'Страницы';
 $this->params['breadcrumbs'][] = $this->title;
@@ -15,21 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Добавить новую', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-
-    <?= GridView::widget([
+    <?= GridVieW::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'id',
             'name',
             'slug',
             'text_short',
-            'visibility',
+            Support::editableColumn($model, 'visibility', 'Видимость', '/page/update-grid'),
             [
-                'class' => ActionColumn::class,
-                'urlCreator' => function ($action, Page $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                }
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
             ],
         ],
     ]); ?>

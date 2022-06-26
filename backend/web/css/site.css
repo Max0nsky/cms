@@ -107,6 +107,10 @@ a.desc:after {
     margin: 10px !important;
 }
 
+.breadcrumb {
+    margin-bottom: 0px !important;
+}
+
 /*---------- checkbox ----------*/
 .cust-checkbox [type="checkbox"],
 .cust-checkbox [type="radio"] {

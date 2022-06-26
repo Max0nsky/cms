@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+use kartik\grid\EditableColumnAction;
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use Yii;
 
 class AppController extends Controller
@@ -15,7 +17,7 @@ class AppController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'update-grid'],
                         'allow' => true,
                         'roles' => ['canAdmin'],
                     ],

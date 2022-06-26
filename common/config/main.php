@@ -22,6 +22,9 @@ return [
         ],
     ],
     'modules' => [
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+        ],
         'yii2images' => [
             'class' => 'rico\yii2images\Module',
             //be sure, that permissions ok 

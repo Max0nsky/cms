@@ -2,14 +2,17 @@
 
 namespace backend\controllers;
 
+use common\components\Support\Support;
 use common\models\Page;
-use yii\data\ActiveDataProvider;
+use common\models\search\PageSearch;
+use kartik\grid\EditableColumnAction;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use Yii;
 
 class PageController extends AppController
 {
-
     public function behaviors()
     {
         return array_merge(
@@ -27,24 +30,15 @@ class PageController extends AppController
 
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Page::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
-        ]);
+        $searchModel = new PageSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
+
 
     public function actionView($id)
     {
@@ -95,5 +89,23 @@ class PageController extends AppController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actions()
+    {
+        return ArrayHelper::merge(parent::actions(), [
+            'update-grid' => [
+                'class' => EditableColumnAction::class,
+                'modelClass' => Page::class,
+                'outputValue' => function ($model, $attribute, $key, $index) {
+                    switch ($attribute) {
+                        case 'visibility':
+                            $result = Support::getListYesNo($model->$attribute);
+                            break;
+                    }
+                    return $result;
+                },
+            ]
+        ]);
     }
 }

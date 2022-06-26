@@ -6,6 +6,7 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Разделы', 'options' => ['class' => 'header']],
+                    ['label' => 'Страницы', 'icon' => 'file-code-o', 'url' => ['/page']],
                     ['label' => 'Настройки', 'icon' => 'cog', 'url' => ['/site/settings']],
                     ['label' => 'Служебное', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
