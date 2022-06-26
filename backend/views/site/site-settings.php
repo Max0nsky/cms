@@ -87,7 +87,7 @@ $settings->clearCache();
           </div>
 
           <div class="tab-pane" id="tab_4">
-            
+
             <div class="row">
               <div class="col-sm-12">
                 <?= $form->field($model, 'organization_domain') ?>

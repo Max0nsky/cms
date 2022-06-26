@@ -43,3 +43,4 @@ phpunit.phar
 /backend/web/robots.txt
 /files/images/store
 /files/images/cache
+/files/images/upload

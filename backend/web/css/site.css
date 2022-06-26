@@ -106,3 +106,63 @@ a.desc:after {
 .save-btn {
     margin: 10px !important;
 }
+
+/*---------- checkbox ----------*/
+.cust-checkbox [type="checkbox"],
+.cust-checkbox [type="radio"] {
+  display: none;
+}
+
+.cust-checkbox label {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.cust-checkbox label:hover {
+  color: #3c8dbc;
+}
+
+.cust-checkbox__box {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border: 2px solid #3c8dbc;
+  border-radius: 10px;
+  background: #fff;
+  transition: all 0.3s;
+  vertical-align: top;
+}
+
+.cust-checkbox__box:before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 5px solid #3c8dbc;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.cust-checkbox [type="checkbox"]:checked + .cust-checkbox__box,
+.cust-checkbox [type="radio"]:checked + .cust-checkbox__box {
+  background: #3c8dbc;
+}
+
+.cust-checkbox [type="checkbox"]:checked + .cust-checkbox__box:before,
+.cust-checkbox [type="radio"]:checked + .cust-checkbox__box:before {
+  left: calc(100% - 14px);
+  border-color: #fff;
+}
+
+.pull-right-check {
+  padding: 15px 42px 0 0;
+}
+/*---------- checkbox ----------*/

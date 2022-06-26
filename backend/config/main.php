@@ -55,6 +55,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                'settings' => 'site/settings',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
