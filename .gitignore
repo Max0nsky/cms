@@ -44,3 +44,5 @@ phpunit.phar
 /files/images/store
 /files/images/cache
 /files/images/upload
+
+sitemap.xml

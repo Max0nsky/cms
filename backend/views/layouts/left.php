@@ -6,8 +6,9 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Разделы', 'options' => ['class' => 'header']],
-                    ['label' => 'Страницы', 'icon' => 'file-code-o', 'url' => ['/page']],
+                    ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page']],
                     ['label' => 'Настройки', 'icon' => 'cog', 'url' => ['/site/settings']],
+                    ['label' => 'Sitemap', 'icon' => 'file-code-o', 'url' => ['/site/sitemap']],
                     ['label' => 'Служебное', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],

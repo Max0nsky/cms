@@ -1,4 +1,7 @@
 <?php
+
+$frontend_config = require(__DIR__ . '/../../frontend/config/main.php');
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -49,6 +52,8 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
+        'urlManagerFrontend' => $frontend_config['components']['urlManagerFrontend'],
 
         'request' => [
             'baseUrl' => '/admin',

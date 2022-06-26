@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use backend\models\forms\ChangePasswordForm;
+use common\components\Sitemap\Sitemap;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -19,7 +20,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'settings', 'change-password'],
+                        'actions' => ['index', 'settings', 'change-password', 'sitemap'],
                         'allow' => true,
                         'roles' => ['canAdmin'],
                     ],
@@ -104,6 +105,16 @@ class SiteController extends Controller
         }
 
         return $this->goBack();
-
     }
+
+    public function actionSitemap()
+    {
+        $sitemap = new Sitemap();
+        $sitemap->generate();
+
+        Yii::$app->session->setFlash('success', 'Файл sitemap.xml успешно сгенерирован');
+
+        return $this->goBack();
+    }
+
 }

@@ -56,4 +56,15 @@ class Page extends \yii\db\ActiveRecord
             'visibility' => 'Видимость',
         ];
     }
+
+    public static function findWhereFront()
+    {
+        return self::find()->where(['visibility' => 1, 'is_delete' => 0]);
+    }
+
+    public function getLink()
+    {
+        $link = '/' . $this->slug;
+        return $link;
+    }
 }

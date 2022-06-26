@@ -41,15 +41,16 @@ return [
             'baseUrl' => '',
         ],
 
-        'urlManager' => [
+        'urlManagerFrontend' => [
+            'baseUrl' => '',
+            'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
-        ],
-
+        ]
     ],
     'params' => $params,
 ];
