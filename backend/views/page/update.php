@@ -11,6 +11,8 @@ $this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <div class="page-update">
 
+    <h1> <?= $this->title ?> </h1>
+
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

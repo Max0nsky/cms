@@ -15,12 +15,15 @@ $settings->clearCache();
 ?>
 
 <div class="site-index">
-
+  <div class="row">
+    <div class="col-sm-12">
+      <h1> <?= $this->title ?> </h1>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-8">
       <?php $form = ActiveForm::begin(['id' => 'site-settings-form']); ?>
-      <div class="nav-tabs-custom">
-
+      <div class="beauty-container nav-tabs-custom">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab_1" data-toggle="tab">Основные</a></li>
           <li><a href="#tab_2" data-toggle="tab">SEO</a></li>
@@ -105,6 +108,25 @@ $settings->clearCache();
       <?php ActiveForm::end(); ?>
 
     </div>
-  </div>
 
+    <div class="col-md-3">
+      <div class="beauty-sub-container nav-tabs-custom">
+        <div class="tab-content">
+          <h3>Статистика</h2>
+
+            <div class="row">
+              <div class="col-md-12">
+                <?php $file = Yii::getAlias('@app/../sitemap.xml'); ?>
+                <?php if (file_exists($file)) : ?>
+                  Карта <a target="_blank" href="<?= Yii::$app->urlManagerFrontend->createAbsoluteUrl('/sitemap.xml') ?>"> <b> sitemap.xml</b></a> обновлена: <?= date("d.m.y в H:i:s", filemtime($file)); ?>
+                  <br>
+                <?php endif; ?>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

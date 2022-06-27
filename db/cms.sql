@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 26 2022 г., 15:37
+-- Время создания: Июн 27 2022 г., 22:58
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.3.9
 
@@ -180,7 +180,7 @@ CREATE TABLE `settings` (
   `type` varchar(255) NOT NULL,
   `section` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
-  `value` text,
+  `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `active` tinyint(1) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
@@ -191,7 +191,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `type`, `section`, `key`, `value`, `active`, `created`, `modified`) VALUES
-(1, 'string', 'Settings', 'email', '', 1, '2022-06-26 11:12:20', NULL),
+(1, 'string', 'Settings', 'email', '', 1, '2022-06-26 11:12:20', '2022-06-27 22:57:38'),
 (2, 'string', 'Settings', 'phone', '', 1, '2022-06-26 11:12:20', NULL),
 (3, 'string', 'Settings', 'text_about', '', 1, '2022-06-26 11:12:20', NULL),
 (4, 'string', 'Settings', 'smtp_username', '', 1, '2022-06-26 11:12:20', NULL),
@@ -310,7 +310,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `seo`
