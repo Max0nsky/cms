@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 27 2022 г., 22:58
+-- Время создания: Июн 29 2022 г., 21:00
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.3.9
 
@@ -21,6 +21,42 @@ SET time_zone = "+00:00";
 --
 -- База данных: `cms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `article`
+--
+
+CREATE TABLE `article` (
+  `id` int(11) NOT NULL,
+  `article_category_id` int(11) DEFAULT NULL,
+  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text_short` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text` text COLLATE utf8mb4_unicode_ci,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `visibility` tinyint(4) NOT NULL DEFAULT '0',
+  `is_delete` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `article_category`
+--
+
+CREATE TABLE `article_category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `visibility` tinyint(4) NOT NULL DEFAULT '0',
+  `is_delete` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -238,6 +274,18 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 --
 
 --
+-- Индексы таблицы `article`
+--
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `article_category`
+--
+ALTER TABLE `article_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `auth_assignment`
 --
 ALTER TABLE `auth_assignment`
@@ -305,6 +353,18 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `article`
+--
+ALTER TABLE `article`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `article_category`
+--
+ALTER TABLE `article_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `page`

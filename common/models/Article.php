@@ -7,12 +7,13 @@ use yii\behaviors\TimestampBehavior;
 use common\components\Seo\SeoBehavior;
 use Yii;
 
-class Page extends AppModel
+class Article extends AppModel
 {
+    public $image;
 
     public static function tableName()
     {
-        return 'page';
+        return 'article';
     }
 
     public function behaviors()
@@ -29,6 +30,9 @@ class Page extends AppModel
             'SeoBehavior' => [
                 'class' => SeoBehavior::class,
             ],
+            'ImageBehave' => [
+                'class' => ImageBehave::class,
+            ],
         ];
     }
 
@@ -37,9 +41,10 @@ class Page extends AppModel
         return [
             [['name', 'text'], 'required'],
             [['text'], 'string'],
-            [['created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
+            [['article_category_id', 'created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 254],
             [['text_short'], 'string', 'max' => 1000],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => ['jpg', 'jpeg', 'png'], 'maxFiles' => 1],
         ];
     }
 
@@ -47,6 +52,7 @@ class Page extends AppModel
     {
         return [
             'id' => 'ID',
+            'article_category_id' => 'Категория',
             'name' => 'Наименование',
             'slug' => 'URL',
             'text_short' => 'Краткое описание',
@@ -57,6 +63,11 @@ class Page extends AppModel
         ];
     }
 
+    public function getArticleCategory()
+    {
+        return $this->hasOne(ArticleCategory::class, ['id' => 'article_category_id']);
+    }
+
     public static function findWhereFront()
     {
         return self::find()->where(['visibility' => 1, 'is_delete' => 0]);
@@ -64,7 +75,12 @@ class Page extends AppModel
 
     public function getLink()
     {
-        $link = '/' . $this->slug;
+        $link = "/" . $this->slug;
+
+        if (!empty($this->articleCategory)) {
+            $link = "/" . $this->articleCategor->slug . $link;
+        }
+
         return $link;
     }
 }

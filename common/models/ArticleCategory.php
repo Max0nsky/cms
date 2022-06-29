@@ -7,12 +7,13 @@ use yii\behaviors\TimestampBehavior;
 use common\components\Seo\SeoBehavior;
 use Yii;
 
-class Page extends AppModel
+class ArticleCategory extends AppModel
 {
+    public $image;
 
     public static function tableName()
     {
-        return 'page';
+        return 'article_ctegory';
     }
 
     public function behaviors()
@@ -29,17 +30,20 @@ class Page extends AppModel
             'SeoBehavior' => [
                 'class' => SeoBehavior::class,
             ],
+            'ImageBehave' => [
+                'class' => ImageBehave::class,
+            ],
         ];
     }
 
     public function rules()
     {
         return [
-            [['name', 'text'], 'required'],
-            [['text'], 'string'],
+            [['name'], 'required'],
+            [['description'], 'string'],
             [['created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 254],
-            [['text_short'], 'string', 'max' => 1000],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => ['jpg','jpeg', 'png'], 'maxFiles' => 1],
         ];
     }
 
@@ -49,12 +53,17 @@ class Page extends AppModel
             'id' => 'ID',
             'name' => 'Наименование',
             'slug' => 'URL',
-            'text_short' => 'Краткое описание',
+            'description' => 'Описание',
             'text' => 'Контент',
             'created_at' => 'Добавление',
             'updated_at' => 'Редактирование',
             'visibility' => 'Видимость',
         ];
+    }
+
+    public function getArticles()
+    {
+        return $this->hasMany(Article::class, ['article_category_id' => 'id']);
     }
 
     public static function findWhereFront()
