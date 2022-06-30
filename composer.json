@@ -20,7 +20,9 @@
         "dmstr/yii2-adminlte-asset": "^2.6",
         "2amigos/yii2-ckeditor-widget": "~2.1",
         "kartik-v/yii2-grid": "^3.5",
-        "kartik-v/yii2-editable": "^1.8"
+        "kartik-v/yii2-editable": "^1.8",
+        "costa-rico/yii2-images": "*",
+        "yiisoft/yii2-imagine": "^2.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

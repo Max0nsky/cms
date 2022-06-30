@@ -6,6 +6,14 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Разделы', 'options' => ['class' => 'header']],
+                    [
+                        'label' => 'Блог',
+                        'icon' => 'list',
+                        'items' => [
+                            ['label' => 'Разделы', 'icon' => 'folder', 'url' => ['/article-category']],
+                            ['label' => 'Статьи', 'icon' => 'list-alt', 'url' => ['/article']],
+                        ],
+                    ],
                     ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page']],
                     ['label' => 'Настройки', 'icon' => 'cog', 'url' => ['/site/settings']],
                     ['label' => 'Sitemap', 'icon' => 'file-code-o', 'url' => ['/site/sitemap']],

@@ -13,9 +13,12 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/lightcase.css',
+        'css/lightcase-no-breakpoint.css',
     ];
     public $js = [
         'js/main.js',
+        'js/lightcase.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

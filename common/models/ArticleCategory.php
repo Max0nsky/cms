@@ -5,6 +5,7 @@ namespace common\models;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use common\components\Seo\SeoBehavior;
+use rico\yii2images\behaviors\ImageBehave;
 use Yii;
 
 class ArticleCategory extends AppModel
@@ -13,7 +14,7 @@ class ArticleCategory extends AppModel
 
     public static function tableName()
     {
-        return 'article_ctegory';
+        return 'article_category';
     }
 
     public function behaviors()
@@ -58,6 +59,7 @@ class ArticleCategory extends AppModel
             'created_at' => 'Добавление',
             'updated_at' => 'Редактирование',
             'visibility' => 'Видимость',
+            'image' => 'Изображение',
         ];
     }
 

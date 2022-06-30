@@ -4,6 +4,8 @@ namespace common\models;
 
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use rico\yii2images\behaviors\ImageBehave;
+
 use common\components\Seo\SeoBehavior;
 use Yii;
 
