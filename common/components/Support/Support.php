@@ -25,10 +25,7 @@ class Support
 
     public static function getListYesNo($key = false)
     {
-        $array = [
-            'Нет',
-            'Да',
-        ];
+        $array = ['Нет', 'Да',];
         if (is_bool($key)) {
             return $array;
         }
@@ -38,7 +35,7 @@ class Support
     public static function editableColumn($model, $attribute, $name, $actionPath)
     {
         return [
-            'attribute' => 'visibility',
+            'attribute' => $attribute,
             'class' => '\kartik\grid\EditableColumn',
             'editableOptions' => [
                 'formOptions' => ['action' => [$actionPath]],
