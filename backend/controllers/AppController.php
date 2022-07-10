@@ -17,7 +17,7 @@ class AppController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'update-grid'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'update-grid', 'image-delete'],
                         'allow' => true,
                         'roles' => ['canAdmin'],
                     ],

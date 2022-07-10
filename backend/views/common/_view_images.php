@@ -1,7 +1,9 @@
 <?php
 
-use yii\helpers\Html;
+use common\components\Support\Support;
 use yii\helpers\Url;
+
+
 ?>
 
 <div class="row">
@@ -10,18 +12,16 @@ use yii\helpers\Url;
         <?php if (!empty($images)) : ?>
             <?php foreach ($images as $image) : ?>
                 <div class="col-sm-4 img-view">
-                    <span class="pull-left btn btn-danger delete-image" style="position: absolute;">
-                        <?= Html::a(
-                            '<span class="glyphicon glyphicon-remove" style=" color: #fff;"></span>',
-                            Url::to(['/' . mb_strtolower($image->modelName) . '/image-delete', 'id_img' => $image->id,  'id_model' => $model->id])
-                        ) ?>
-                    </span>
+                    <a href="<?= Url::to(['/' . Support::uncamelCase($image->modelName) . '/image-delete', 'id_img' => $image->id,  'id_model' => $model->id]) ?>">
+                        <span class="pull-left btn btn-danger delete-image" style="position: absolute;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </span>
+                    </a>
                     <a href="<?= $image->getPath() ?>" data-rel="lightcase:g">
-                        <?= Html::img($image->getPath('200')); ?>
+                        <img class="image-for-model" src="<?= $image->getPath('200') ?>">
                     </a>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
-
     <?php endif; ?>
 </div>

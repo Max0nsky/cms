@@ -223,3 +223,7 @@ a.desc:after {
     margin-right: 5px;
     margin-top: 10px;
 }
+
+.image-for-model {
+    border-radius: 5px;
+}

@@ -23,6 +23,17 @@ class Support
         return $result;
     }
 
+    /**
+     * Заменит имя модели на необходимый для url вид
+     * Если ArticleCategory вернёт article-category
+     */
+    public static function uncamelCase($str)
+    {
+        $str = preg_replace('/([a-z])([A-Z])/', "\\1-\\2", $str);
+        $str = strtolower($str);
+        return $str;
+    }
+
     public static function getListYesNo($key = false)
     {
         $array = ['Нет', 'Да',];

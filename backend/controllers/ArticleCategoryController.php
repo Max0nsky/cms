@@ -39,7 +39,6 @@ class ArticleCategoryController extends AppController
         ]);
     }
 
-
     public function actionView($id)
     {
         return $this->redirect(['index']);
@@ -91,6 +90,24 @@ class ArticleCategoryController extends AppController
         }
 
         throw new NotFoundHttpException('The requested ArticleCategory does not exist.');
+    }
+
+    /**
+     * Удаление изображения
+     */
+    public function actionImageDelete()
+    {
+        $get = Yii::$app->request->get();
+        $model = $this->findModel($get['id_model']);
+        
+        foreach ($model->getImages() as $image) {
+            if ($image->id == $get['id_img']) {
+                $model->removeImage($image);
+                break;
+            }
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     public function actions()

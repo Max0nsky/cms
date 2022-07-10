@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'slug',
-            'description',
+            'description:raw',
             Support::editableColumn($model, 'visibility', 'Видимость', '/article-category/update-grid'),
             [
                 'class' => 'yii\grid\ActionColumn',
