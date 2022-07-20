@@ -17,8 +17,8 @@ class AppAsset extends AssetBundle
         'css/lightcase-no-breakpoint.css',
     ];
     public $js = [
-        'js/main.js',
         'js/lightcase.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

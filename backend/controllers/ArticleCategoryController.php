@@ -56,6 +56,10 @@ class ArticleCategoryController extends AppController
 
             return $this->redirect(['index']);
         }
+        
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     public function actionUpdate($id)
@@ -99,7 +103,7 @@ class ArticleCategoryController extends AppController
     {
         $get = Yii::$app->request->get();
         $model = $this->findModel($get['id_model']);
-        
+
         foreach ($model->getImages() as $image) {
             if ($image->id == $get['id_img']) {
                 $model->removeImage($image);

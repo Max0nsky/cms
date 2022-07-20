@@ -24,13 +24,13 @@ backend\assets\AdminLteAsset::register($this);
     
     <div class="wrapper">
 
-        <?= $this->render('header', compact('directoryAsset')) ?>
+        <?= $this->render('header') ?>
 
-        <?= $this->render('left', compact('directoryAsset')) ?>
+        <?= $this->render('left') ?>
 
-        <?= $this->render('content', compact('content', 'directoryAsset')) ?>
+        <?= $this->render('content', compact('content')) ?>
 
-        <?= $this->render('modals', compact('directoryAsset')) ?>
+        <?= $this->render('modals') ?>
 
     </div>
 

@@ -2,31 +2,31 @@
 
 namespace common\widgets;
 
-use Yii;
 use dosamigos\ckeditor\CKEditor;
-use yii\helpers\ArrayHelper;
 use mihaildev\elfinder\ElFinder;
+use yii\helpers\ArrayHelper;
+use Yii;
 
-class CkeditorSite extends CKEditor {
-
-    public function initOptions() {
+class CkeditorSite extends CKEditor
+{
+    public function initOptions()
+    {
         Yii::$app->view->registerJs("CKEDITOR.plugins.addExternal('codemirror', '/backend/web/js/ckeditor_plugins/codemirror/', 'plugin.js');");
 
         $this->clientOptions = ElFinder::ckeditorOptions(['elfinder'], []);
         $this->clientOptions = ArrayHelper::merge($this->getCustom(), $this->clientOptions);
-       
     }
 
-    private function getCustom() {
+    private function getCustom()
+    {
         return [
             'extraPlugins' => 'codemirror',
-            'contentsCss' => '/frontend/web/css/main.css',
+            'contentsCss' => '/frontend/web/css/site.css',
             'allowedContent' => true,
             'height' => 300,
             'toolbar' => [
-                ['name' => 'document', 'items' => ['Source','Save', '-']],
+                ['name' => 'document', 'items' => ['Source', 'Save', '-']],
                 ['name' => 'clipboard', 'items' => ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']],
-                // ['name' => 'editing', 'items' => ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt']],
                 ['name' => 'basicstyles', 'items' => ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat']],
                 ['name' => 'paragraph', 'items' => ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']],
                 ['name' => 'links', 'items' => ['Link', 'Unlink', 'Anchor']],
@@ -35,12 +35,9 @@ class CkeditorSite extends CKEditor {
                 ['name' => 'colors', 'items' => ['TextColor', 'BGColor']],
                 ['name' => 'tools', 'items' => ['Maximize', 'ShowBlocks']],
             ],
-//            'removeButtons' => 'Save,NewPage,Preview,Print,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Language,BidiRtl,BidiLtr,Flash,Smiley,Iframe,Styles,Font,FontSize,About',
             'removePlugins' => 'elementspath',
             'keystrokes'  => ['CKEDITOR.CTRL + 83', 'save'],
             'forcePasteAsPlainText' => true,
         ];
     }
-
 }
-// CKEDITOR.config.forcePasteAsPlainText = true;
