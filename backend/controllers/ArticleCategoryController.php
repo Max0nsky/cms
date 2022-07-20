@@ -96,9 +96,6 @@ class ArticleCategoryController extends AppController
         throw new NotFoundHttpException('The requested ArticleCategory does not exist.');
     }
 
-    /**
-     * Удаление изображения
-     */
     public function actionImageDelete()
     {
         $get = Yii::$app->request->get();

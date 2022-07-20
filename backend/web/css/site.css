@@ -225,3 +225,7 @@ a.desc:after {
 .image-for-model {
   border-radius: 5px;
 }
+
+.kv-table-header {
+  background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 100%);
+}

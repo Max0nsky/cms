@@ -58,8 +58,8 @@ var myVar = {
     },
     save: function (form) {
         console.info(form);
-        //        $(document).bind('keydown', 'ctrl+s', function(){
         $("'" + form + "'").trigger('submit')
-        //        });
     }
 };
+
+myVar.ligh();

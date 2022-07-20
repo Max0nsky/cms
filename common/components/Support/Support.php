@@ -4,9 +4,13 @@ namespace common\components\Support;
 
 use kartik\editable\Editable;
 use Yii;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 class Support
 {
+    const SIZE_COLUMN_IMG = 80;
+
     /**
      * Заменяет элементы текста по типу:
      * {слово1, слово2, слово3, слово4}
@@ -62,6 +66,24 @@ class Support
             'format' => 'boolean',
             'filter' => self::getListYesNo(),
             'label' => $name,
+        ];
+    }
+
+    public static function imageColumn()
+    {
+        $size = self::SIZE_COLUMN_IMG;
+
+        return [
+            'label' => 'Изображение',
+            'format' => 'raw',
+            'options' => ['style' => 'width: ' . $size . 'px; max-width: ' . $size . 'px;'],
+            'contentOptions' => ['style' => 'width: ' . $size . 'px; max-width: ' . $size . 'px;'],
+            'value' => function ($model) {
+                $size = self::SIZE_COLUMN_IMG;
+                return Html::img(Url::toRoute($model->getImage()->getPath($size . 'x' . $size)), [
+                    'style' => 'width:' . $size . 'px;'
+                ]);
+            },
         ];
     }
 }

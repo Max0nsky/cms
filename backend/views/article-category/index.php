@@ -4,7 +4,6 @@ use common\components\Support\Support;
 use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\ActionColumn;
 
 $this->title = 'Разделы статей';
 $this->params['breadcrumbs'][] = $this->title;
@@ -25,18 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'label' => 'Изображение',
-                'format' => 'raw',
-                'value' => function ($model) {
-                    return Html::img(Url::toRoute($model->getImage()->getPath('80x')), [
-                        'style' => 'width:80px;'
-                    ]);
-                },
-            ],
+            Support::imageColumn(),
             'name',
             'slug',
-            'description:raw',
             Support::editableColumn($model, 'visibility', 'Видимость', '/article-category/update-grid'),
             [
                 'class' => 'yii\grid\ActionColumn',

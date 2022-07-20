@@ -25,7 +25,6 @@ $seo = $model->getSeo();
                             <div class="col-sm-10">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                                 <?= $form->field($seo, 'h1')->textInput(['maxlength' => true]) ?>
-                                <?= $form->field($model, 'text_short')->textarea(['rows' => 3]) ?>
                                 <?= $form->field($model, 'text')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
                             <div class="col-sm-2">

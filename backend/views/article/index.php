@@ -25,15 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'label' => 'Изображение',
-                'format' => 'raw',
-                'value' => function ($model) {
-                    return Html::img(Url::toRoute($model->getImage()->getPath('80x')), [
-                        'style' => 'width:80px;'
-                    ]);
-                },
-            ],
+            Support::imageColumn(),
             'name',
             'slug',
             'text_short',

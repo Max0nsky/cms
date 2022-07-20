@@ -44,7 +44,7 @@ class ArticleCategory extends AppModel
             [['description'], 'string'],
             [['created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 254],
-            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => ['jpg','jpeg', 'png'], 'maxFiles' => 1],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => ['jpg','jpeg', 'png', 'webp'], 'maxFiles' => 1],
         ];
     }
 

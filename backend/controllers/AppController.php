@@ -2,11 +2,10 @@
 
 namespace backend\controllers;
 
-use kartik\grid\EditableColumnAction;
+use common\components\Support\Support;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 class AppController extends Controller
 {
@@ -25,10 +24,4 @@ class AppController extends Controller
             ],
         ];
     }
-
-    // public function beforeAction($action)
-    // {
-    //     $this->enableCsrfValidation = false;
-    //     return parent::beforeAction($action);
-    // }
 }
