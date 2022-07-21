@@ -3,7 +3,7 @@
 use common\components\Support\Support;
 use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = 'Разделы статей';
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('Создать раздел', ['create'], ['class' => 'btn btn-primary create-btn']) ?>
         </div>
     </div>
+
+    <?php Pjax::begin(); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,5 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+    <?php Pjax::end(); ?>
 
 </div>

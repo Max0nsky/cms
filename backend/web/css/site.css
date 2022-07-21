@@ -229,3 +229,7 @@ a.desc:after {
 .kv-table-header {
   background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 100%);
 }
+
+.kv-grid-table img {
+  border-radius: 3px;
+}
