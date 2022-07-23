@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use backend\models\forms\ChangePasswordForm;
+use backend\models\forms\LoginForm;
 use common\components\Sitemap\Sitemap;
-use common\models\LoginForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;

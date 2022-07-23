@@ -1,7 +1,8 @@
 <?php
 
-namespace common\models;
+namespace backend\models\forms;
 
+use common\models\User;
 use Yii;
 use yii\base\Model;
 
@@ -33,6 +34,16 @@ class LoginForm extends Model
     }
 
     /**
+     * @inheritdoc
+     */
+    public function attributeLabels() {
+        return [
+            'username' => 'Логин',
+            'password' => 'Пароль'
+        ];
+    }
+
+    /**
      * Validates the password.
      * This method serves as the inline validation for password.
      *
@@ -44,7 +55,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Неправильный логин или пароль.');
             }
         }
     }

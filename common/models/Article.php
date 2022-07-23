@@ -45,7 +45,15 @@ class Article extends AppModel
             [['article_category_id', 'created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 254],
             [['text_short'], 'string', 'max' => 1000],
-            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => ['jpg', 'jpeg', 'png'], 'maxFiles' => 1],
+            [
+                ['image'],
+                'file',
+                'skipOnEmpty' => true,
+                'maxFiles' => 1,
+                'extensions' => ['jpg', 'jpeg', 'png'],
+                'maxSize' => (10000 * 1024),
+                'tooBig' => 'Размер превышает 10MB'
+            ],
         ];
     }
 

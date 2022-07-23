@@ -21,7 +21,7 @@ $fieldOptions2 = [
         <a href="#"><b>Авторизация</b></a>
     </div>
 
-    <div class="login-box-body">
+    <div class="login-box-body" style="border-radius: 5px;">
         <p class="login-box-msg">Введите необходимые данные</p>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
