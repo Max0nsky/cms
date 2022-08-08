@@ -169,14 +169,14 @@ a.desc:after {
 }
 /*---------- checkbox ----------*/
 .navbar-static-top {
-  background: linear-gradient(45deg, #7d8bcc, #9ba6e7cb, #5c6cbe);
+  background: linear-gradient(45deg, #7e8cdd, #96a0ec, #6d7ed1);
 }
 .dropdown-menu .user-header {
-  background: linear-gradient(45deg, #6b7ac2, #919acfe1, #919acfe1);
+  background: linear-gradient(45deg, #6b7ac2, #7782d9, #919acfe1);
 }
 
 .main-header .logo {
-  background: linear-gradient(45deg, #7b87c7, #707ab3);
+  background: linear-gradient(45deg, #7782d9ee, #7e8cdd);
 }
 
 .kv-grid-container {
@@ -224,6 +224,8 @@ a.desc:after {
 
 .image-for-model {
   border-radius: 5px;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .kv-table-header {
@@ -232,4 +234,9 @@ a.desc:after {
 
 .kv-grid-table img {
   border-radius: 3px;
+}
+
+.image-text-input{
+  margin-top: 2px;
+  border-radius: 5px !important;
 }

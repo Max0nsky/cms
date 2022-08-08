@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\Image\ImageNameBehavior;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
@@ -33,6 +34,9 @@ class ArticleCategory extends AppModel
             ],
             'ImageBehave' => [
                 'class' => ImageBehave::class,
+            ],
+            'ImageNameBehavior' => [
+                'class' => ImageNameBehavior::class,
             ],
         ];
     }

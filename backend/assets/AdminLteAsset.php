@@ -9,7 +9,7 @@ class AdminLteAsset extends BaseAdminLteAsset
 {
     public $sourcePath = '@backend/web/adminlte';
     public $css = [
-        'css/AdminLTE.min.css',
+        'css/AdminLTE.css',
     ];
     public $js = [
         'js/adminlte.min.js'
@@ -21,16 +21,10 @@ class AdminLteAsset extends BaseAdminLteAsset
         'yii\bootstrap\BootstrapPluginAsset',
     ];
 
-    public $skin = '_all-skins';
-
     public function init()
     {
-        if ($this->skin) {
-            if (('_all-skins' !== $this->skin) && (strpos($this->skin, 'skin-') !== 0)) {
-                throw new Exception('Invalid skin specified');
-            }
-            $this->css[] = sprintf('css/skins/%s.min.css', $this->skin);
-        }
+        $this->css[] = sprintf('css/skins/_all-skins.css');
+
         parent::init();
     }
 }

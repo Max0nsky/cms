@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 29 2022 г., 21:00
+-- Время создания: Авг 08 2022 г., 21:01
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.3.9
 
@@ -57,6 +57,15 @@ CREATE TABLE `article_category` (
   `visibility` tinyint(4) NOT NULL DEFAULT '0',
   `is_delete` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `article_category`
+--
+
+INSERT INTO `article_category` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`, `visibility`, `is_delete`) VALUES
+(1, 'Тест', 'test', '<p>Тест</p>\r\n', 1656614159, 1659981616, 0, 0),
+(2, 'Тест 2', 'test-2', '<p>qwe</p>\r\n', 1658345650, 1658431183, 0, 0),
+(3, '1e 12 ', '1e-12', '<p>qwe&nbsp;</p>\r\n', 1658345655, 1658434568, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -138,6 +147,30 @@ CREATE TABLE `auth_rule` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `image`
+--
+
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL,
+  `filePath` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `itemId` int(11) DEFAULT NULL,
+  `isMain` tinyint(1) DEFAULT NULL,
+  `modelName` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urlAlias` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `text` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `image`
+--
+
+INSERT INTO `image` (`id`, `filePath`, `itemId`, `isMain`, `modelName`, `urlAlias`, `name`, `text`) VALUES
+(1, 'ArticleCategories/ArticleCategory1/0c0990.jpg', 1, 1, 'ArticleCategory', '6343e8c09d-1', 'article_category_image', 'Проверка');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `migration`
 --
 
@@ -155,6 +188,8 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m130524_201442_init', 1656229364),
 ('m140506_102106_rbac_init', 1656229724),
 ('m140618_045255_create_settings', 1656230993),
+('m140622_111540_create_image_table', 1656611379),
+('m140622_111545_add_name_to_image_table', 1656611379),
 ('m151126_091910_add_unique_index', 1656230993),
 ('m170907_052038_rbac_add_index_on_auth_assignment_user_id', 1656229724),
 ('m180523_151638_rbac_updates_indexes_without_prefix', 1656229724),
@@ -203,7 +238,10 @@ INSERT INTO `seo` (`id`, `entity_name`, `entity_id`, `h1`, `title`, `keywords`, 
 (1, 'Page', 1, '', '', '', ''),
 (2, 'Page', 2, '', '', '', ''),
 (3, 'Page', 3, '', '', '', ''),
-(4, 'Page', 4, '', '', '', '');
+(4, 'Page', 4, '', '', '', ''),
+(5, 'ArticleCategory', 1, '', '', '', ''),
+(6, 'ArticleCategory', 2, '', '', '', ''),
+(7, 'ArticleCategory', 3, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -314,6 +352,12 @@ ALTER TABLE `auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
+-- Индексы таблицы `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `migration`
 --
 ALTER TABLE `migration`
@@ -364,7 +408,13 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT для таблицы `article_category`
 --
 ALTER TABLE `article_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `image`
+--
+ALTER TABLE `image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `page`
@@ -376,7 +426,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT для таблицы `seo`
 --
 ALTER TABLE `seo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `settings`
