@@ -2,20 +2,19 @@
 
 namespace common\models;
 
-use common\components\Image\ImageNameBehavior;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
 use common\components\Seo\SeoBehavior;
 use Yii;
 
-class ArticleCategory extends AppModel
+class Good extends AppModel
 {
-    public $image;
+    public $images;
 
     public static function tableName()
     {
-        return 'article_category';
+        return 'good';
     }
 
     public function behaviors()
@@ -35,24 +34,21 @@ class ArticleCategory extends AppModel
             'ImageBehave' => [
                 'class' => ImageBehave::class,
             ],
-            'ImageNameBehavior' => [
-                'class' => ImageNameBehavior::class,
-            ],
         ];
     }
 
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['description'], 'string'],
-            [['created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
+            [['name', 'price'], 'required'],
             [['name', 'slug'], 'string', 'max' => 254],
+            [['price'], 'number'],
+            [['created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
             [
-                ['image'],
+                ['images'],
                 'file',
                 'skipOnEmpty' => true,
-                'maxFiles' => 1,
+                'maxFiles' => 10,
                 'extensions' => ['jpg', 'jpeg', 'png'],
                 'maxSize' => (10000 * 1024),
                 'tooBig' => 'Размер превышает 10MB'
@@ -66,18 +62,11 @@ class ArticleCategory extends AppModel
             'id' => 'ID',
             'name' => 'Наименование',
             'slug' => 'URL',
-            'description' => 'Описание',
-            'text' => 'Контент',
+            'price' => 'Цена',
             'created_at' => 'Добавление',
             'updated_at' => 'Редактирование',
             'is_public' => 'Видимость',
-            'image' => 'Изображение',
         ];
-    }
-
-    public function getArticles()
-    {
-        return $this->hasMany(Article::class, ['article_category_id' => 'id']);
     }
 
     public static function findWhereFront()
@@ -87,7 +76,6 @@ class ArticleCategory extends AppModel
 
     public function getLink()
     {
-        $link = '/' . $this->slug;
-        return $link;
+        return "/good/" . $this->slug;
     }
 }

@@ -12,7 +12,7 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'article_category_id', 'created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
+            [['id', 'article_category_id', 'created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
             [['name', 'slug', 'text_short', 'text'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class ArticleSearch extends Article
             'article_category_id' => $this->article_category_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'visibility' => $this->visibility,
+            'is_public' => $this->is_public,
             'is_delete' => $this->is_delete,
         ]);
 

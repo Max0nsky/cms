@@ -2,7 +2,6 @@
 
 namespace backend\assets;
 
-use yii\base\Exception;
 use yii\web\AssetBundle as BaseAdminLteAsset;
 
 class AdminLteAsset extends BaseAdminLteAsset
@@ -22,10 +21,4 @@ class AdminLteAsset extends BaseAdminLteAsset
         'yii\bootstrap\BootstrapPluginAsset',
     ];
 
-    // public function init()
-    // {
-    //     $this->css[] = sprintf('css/skins/_all-skins.css');
-
-    //     parent::init();
-    // }
 }

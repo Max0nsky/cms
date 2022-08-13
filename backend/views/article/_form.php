@@ -28,7 +28,7 @@ $seo = $model->getSeo();
                                 <?= $form->field($model, 'text')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
                             <div class="col-sm-2">
-                                <?= $form->field($model, 'visibility', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
+                                <?= $form->field($model, 'is_public', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
                             </div>
                         </div>
                     </div>

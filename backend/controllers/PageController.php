@@ -99,7 +99,7 @@ class PageController extends AppController
                 'modelClass' => Page::class,
                 'outputValue' => function ($model, $attribute, $key, $index) {
                     switch ($attribute) {
-                        case 'visibility':
+                        case 'is_public':
                             $result = Support::getListYesNo($model->$attribute);
                             break;
                     }

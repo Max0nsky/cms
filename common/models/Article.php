@@ -42,7 +42,7 @@ class Article extends AppModel
         return [
             [['name', 'text'], 'required'],
             [['text'], 'string'],
-            [['article_category_id', 'created_at', 'updated_at', 'visibility', 'is_delete'], 'integer'],
+            [['article_category_id', 'created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
             [['name', 'slug'], 'string', 'max' => 254],
             [['text_short'], 'string', 'max' => 1000],
             [
@@ -68,7 +68,7 @@ class Article extends AppModel
             'text' => 'Контент',
             'created_at' => 'Добавление',
             'updated_at' => 'Редактирование',
-            'visibility' => 'Видимость',
+            'is_public' => 'Видимость',
         ];
     }
 
@@ -79,7 +79,7 @@ class Article extends AppModel
 
     public static function findWhereFront()
     {
-        return self::find()->where(['visibility' => 1, 'is_delete' => 0]);
+        return self::find()->where(['is_public' => 1, 'is_delete' => 0]);
     }
 
     public function getLink()

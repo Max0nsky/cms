@@ -11,7 +11,7 @@ class PageSearch extends Page
     public function rules()
     {
         return [
-            [['visibility', 'is_delete'], 'integer'],
+            [['is_public', 'is_delete'], 'integer'],
             [['name', 'slug', 'text', 'text_short'], 'safe'],
         ];
     }
@@ -37,7 +37,7 @@ class PageSearch extends Page
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'visibility' => $this->visibility,
+            'is_public' => $this->is_public,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'name',
             'slug',
-            Support::editableColumn($model, 'visibility', 'Видимость', '/page/update-grid'),
+            Support::editableColumn($model, 'is_public', 'Видимость', '/page/update-grid'),
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

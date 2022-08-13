@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 08 2022 г., 21:01
+-- Время создания: Авг 13 2022 г., 19:59
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.3.9
 
@@ -37,7 +37,7 @@ CREATE TABLE `article` (
   `text` text COLLATE utf8mb4_unicode_ci,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
-  `visibility` tinyint(4) NOT NULL DEFAULT '0',
+  `is_public` tinyint(4) NOT NULL DEFAULT '0',
   `is_delete` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -54,7 +54,7 @@ CREATE TABLE `article_category` (
   `description` text COLLATE utf8mb4_unicode_ci,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
-  `visibility` tinyint(4) NOT NULL DEFAULT '0',
+  `is_public` tinyint(4) NOT NULL DEFAULT '0',
   `is_delete` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -62,8 +62,8 @@ CREATE TABLE `article_category` (
 -- Дамп данных таблицы `article_category`
 --
 
-INSERT INTO `article_category` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`, `visibility`, `is_delete`) VALUES
-(1, 'Тест', 'test', '<p>Тест</p>\r\n', 1656614159, 1659981616, 0, 0),
+INSERT INTO `article_category` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`, `is_public`, `is_delete`) VALUES
+(1, 'Тест', 'test', '<p>Тест</p>\r\n', 1656614159, 1660409440, 0, 0),
 (2, 'Тест 2', 'test-2', '<p>qwe</p>\r\n', 1658345650, 1658431183, 0, 0),
 (3, '1e 12 ', '1e-12', '<p>qwe&nbsp;</p>\r\n', 1658345655, 1658434568, 0, 0);
 
@@ -147,6 +147,23 @@ CREATE TABLE `auth_rule` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `good`
+--
+
+CREATE TABLE `good` (
+  `id` int(11) NOT NULL,
+  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `is_public` tinyint(4) NOT NULL DEFAULT '0',
+  `is_delete` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `image`
 --
 
@@ -160,13 +177,6 @@ CREATE TABLE `image` (
   `name` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `text` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `image`
---
-
-INSERT INTO `image` (`id`, `filePath`, `itemId`, `isMain`, `modelName`, `urlAlias`, `name`, `text`) VALUES
-(1, 'ArticleCategories/ArticleCategory1/0c0990.jpg', 1, 1, 'ArticleCategory', '6343e8c09d-1', 'article_category_image', 'Проверка');
 
 -- --------------------------------------------------------
 
@@ -199,6 +209,40 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `order`
+--
+
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
+  `number` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(254) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_comment` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `payment_status` tinyint(4) NOT NULL DEFAULT '0',
+  `date` int(11) NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `order_good`
+--
+
+CREATE TABLE `order_good` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `good_id` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `page`
 --
 
@@ -210,7 +254,7 @@ CREATE TABLE `page` (
   `text` text COLLATE utf8mb4_unicode_ci,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
-  `visibility` tinyint(4) NOT NULL DEFAULT '0',
+  `is_public` tinyint(4) NOT NULL DEFAULT '0',
   `is_delete` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -229,19 +273,6 @@ CREATE TABLE `seo` (
   `keywords` text,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица seo-параметров для сущностей';
-
---
--- Дамп данных таблицы `seo`
---
-
-INSERT INTO `seo` (`id`, `entity_name`, `entity_id`, `h1`, `title`, `keywords`, `description`) VALUES
-(1, 'Page', 1, '', '', '', ''),
-(2, 'Page', 2, '', '', '', ''),
-(3, 'Page', 3, '', '', '', ''),
-(4, 'Page', 4, '', '', '', ''),
-(5, 'ArticleCategory', 1, '', '', '', ''),
-(6, 'ArticleCategory', 2, '', '', '', ''),
-(7, 'ArticleCategory', 3, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -352,6 +383,12 @@ ALTER TABLE `auth_rule`
   ADD PRIMARY KEY (`name`);
 
 --
+-- Индексы таблицы `good`
+--
+ALTER TABLE `good`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `image`
 --
 ALTER TABLE `image`
@@ -362,6 +399,18 @@ ALTER TABLE `image`
 --
 ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
+
+--
+-- Индексы таблицы `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `order_good`
+--
+ALTER TABLE `order_good`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `page`
@@ -411,10 +460,28 @@ ALTER TABLE `article_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT для таблицы `good`
+--
+ALTER TABLE `good`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `order_good`
+--
+ALTER TABLE `order_good`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `page`
@@ -426,7 +493,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT для таблицы `seo`
 --
 ALTER TABLE `seo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `settings`

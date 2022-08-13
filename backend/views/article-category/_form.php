@@ -27,7 +27,7 @@ $seo = $model->getSeo();
                                 <?= $form->field($model, 'description')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
                             <div class="col-sm-3">
-                                <?= $form->field($model, 'visibility', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
+                                <?= $form->field($model, 'is_public', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
                                 <?= $form->field($model, 'image')->fileInput() ?>
                                 <?= $this->render('../common/_view_images', compact('model')); ?>
                             </div>

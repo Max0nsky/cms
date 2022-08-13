@@ -8,7 +8,6 @@ use yii\imagine\Image;
 
 abstract class AppModel extends ActiveRecord
 {
-
     public function uploadImage($imagesContainer)
     {
         if (!empty($imagesContainer)) {
