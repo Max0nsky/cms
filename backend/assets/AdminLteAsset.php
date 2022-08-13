@@ -10,9 +10,10 @@ class AdminLteAsset extends BaseAdminLteAsset
     public $sourcePath = '@backend/web/adminlte';
     public $css = [
         'css/AdminLTE.css',
+        'css/skins/_all-skins.css',
     ];
     public $js = [
-        'js/adminlte.min.js'
+        'js/adminlte.js'
     ];
     public $depends = [
         'rmrevin\yii\fontawesome\AssetBundle',
@@ -21,10 +22,10 @@ class AdminLteAsset extends BaseAdminLteAsset
         'yii\bootstrap\BootstrapPluginAsset',
     ];
 
-    public function init()
-    {
-        $this->css[] = sprintf('css/skins/_all-skins.css');
+    // public function init()
+    // {
+    //     $this->css[] = sprintf('css/skins/_all-skins.css');
 
-        parent::init();
-    }
+    //     parent::init();
+    // }
 }
