@@ -24,7 +24,7 @@ class ArticleCategory extends AppModel
             'SluggableBehavior' => [
                 'class' => SluggableBehavior::class,
                 'attribute' => 'name',
-                'immutable' => false,
+                'immutable' => true,
             ],
             'TimestampBehavior' => [
                 'class' => TimestampBehavior::class,

@@ -23,7 +23,7 @@ $seo = $model->getSeo();
                         <div class="row">
                             <div class="col-sm-10">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-                                <?= $form->field($seo, 'h1')->textInput(['maxlength' => true]) ?>
+                                <?= $form->field($model, 'slug')->textInput(['readonly' => true]) ?>
                                 <?= $form->field($model, 'text_short')->textarea(['rows' => 3]) ?>
                                 <?= $form->field($model, 'text')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
@@ -33,14 +33,7 @@ $seo = $model->getSeo();
                         </div>
                     </div>
                     <div class="tab-pane" id="tab_2">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <?= $form->field($model, 'slug')->textInput(['readonly' => true]) ?>
-                                <?= $form->field($seo, 'title')->textInput() ?>
-                                <?= $form->field($seo, 'keywords')->textInput() ?>
-                                <?= $form->field($seo, 'description')->textarea(['rows' => 4, 'onkeyup' => 'myVar.lenghtChar(this)']) ?>
-                            </div>
-                        </div>
+                        <?= $this->render('../common/_seo', compact('form', 'model')); ?>
                     </div>
                 </div>
 
