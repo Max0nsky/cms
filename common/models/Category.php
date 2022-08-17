@@ -8,13 +8,13 @@ use rico\yii2images\behaviors\ImageBehave;
 use common\components\Seo\SeoBehavior;
 use Yii;
 
-class Good extends AppModel
+class Category extends AppModel
 {
     public $images;
 
     public static function tableName()
     {
-        return 'good';
+        return 'category';
     }
 
     public function behaviors()
@@ -40,10 +40,9 @@ class Good extends AppModel
     public function rules()
     {
         return [
-            [['name', 'price'], 'required'],
+            [['name',], 'required'],
             [['name', 'slug'], 'string', 'max' => 254],
-            [['price', 'old_price'], 'number'],
-            [['category_id'], 'integer'],
+            [['parent_id'], 'integer'],
             [['created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
             [
                 ['images'],
@@ -63,27 +62,30 @@ class Good extends AppModel
             'id' => 'ID',
             'name' => 'Наименование',
             'slug' => 'URL',
-            'price' => 'Цена',
-            'old_price' => 'Старая цена',
-            'category_id' => 'Категория',
+            'parent_id' => 'Родительская категория',
             'created_at' => 'Добавление',
             'updated_at' => 'Редактирование',
             'is_public' => 'Видимость',
         ];
     }
 
-    public function getCategory()
+    public function getParent()
     {
-        return $this->hasOne(Category::class, ['id' => 'category_id']);
+        return $this->hasOne(self::class, ['id' => 'parent_id']);
+    }
+
+    public function getChilds()
+    {
+        return $this->hasMany(self::class, ['parent_id' => 'id']);
+    }
+
+    public function getGoods()
+    {
+        return $this->hasMany(Good::class, ['category_id' => 'id']);
     }
 
     public static function findWhereFront()
     {
         return self::find()->where(['is_public' => 1, 'is_delete' => 0]);
-    }
-
-    public function getLink()
-    {
-        return "/good/" . $this->slug;
     }
 }

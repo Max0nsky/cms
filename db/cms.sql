@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 13 2022 г., 19:59
+-- Время создания: Авг 17 2022 г., 22:39
 -- Версия сервера: 5.7.25
 -- Версия PHP: 7.3.9
 
@@ -63,8 +63,8 @@ CREATE TABLE `article_category` (
 --
 
 INSERT INTO `article_category` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`, `is_public`, `is_delete`) VALUES
-(1, 'Тест', 'test', '<p>Тест</p>\r\n', 1656614159, 1660409440, 0, 0),
-(2, 'Тест 2', 'test-2', '<p>qwe</p>\r\n', 1658345650, 1658431183, 0, 0),
+(1, 'Тест', 'test', '<p>Тест</p>\r\n', 1656614159, 1660668348, 0, 0),
+(2, 'Тест 2', 'test-2', '<p>qwe</p>\r\n', 1658345650, 1660669197, 0, 0),
 (3, '1e 12 ', '1e-12', '<p>qwe&nbsp;</p>\r\n', 1658345655, 1658434568, 0, 0);
 
 -- --------------------------------------------------------
@@ -147,6 +147,23 @@ CREATE TABLE `auth_rule` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `is_public` tinyint(4) NOT NULL DEFAULT '0',
+  `is_delete` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `good`
 --
 
@@ -155,6 +172,8 @@ CREATE TABLE `good` (
   `name` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
+  `old_price` decimal(10,2) DEFAULT NULL,
+  `category_id` int(11) NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   `is_public` tinyint(4) NOT NULL DEFAULT '0',
@@ -273,6 +292,15 @@ CREATE TABLE `seo` (
   `keywords` text,
   `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Таблица seo-параметров для сущностей';
+
+--
+-- Дамп данных таблицы `seo`
+--
+
+INSERT INTO `seo` (`id`, `entity_name`, `entity_id`, `h1`, `title`, `keywords`, `description`) VALUES
+(1, 'ArticleCategory', 1, '', '', '', ''),
+(2, 'Article', 1, '', '', '', ''),
+(3, 'ArticleCategory', 2, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -493,7 +521,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT для таблицы `seo`
 --
 ALTER TABLE `seo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `settings`
