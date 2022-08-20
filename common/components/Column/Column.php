@@ -47,7 +47,7 @@ class Column
         ];
     }
 
-    public static function dateRangeColumn($searchModel, $attribute, $attribute_start, $attribute_send, $size = '250px')
+    public static function dateRangeColumn($searchModel, $attribute, $attribute_start, $attribute_end, $size = '250px')
     {
         return [
             'attribute' => $attribute,
@@ -64,7 +64,7 @@ class Column
                 'hideInput' => true,
                 'presetDropdown' => true,
                 'startAttribute' => $attribute_start,
-                'endAttribute' => $attribute_send,
+                'endAttribute' => $attribute_end,
                 'pluginOptions' => [
                     'locale' => ['format' => 'd.m.Y'],
                     'separator' => ' - ',
