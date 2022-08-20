@@ -59,7 +59,9 @@ class AdministratorController extends AppController
 
     public function actionDelete($id)
     {
-        // TODO
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
     }
 
     protected function findModel($id)
