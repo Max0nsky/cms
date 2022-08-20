@@ -1,6 +1,6 @@
 <?php
 
-use common\components\Support\Support;
+use common\components\Column\Column;
 use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            Support::imageColumn(),
+            Column::imageColumn(),
             'name',
             'slug',
-            Support::editableColumn($model, 'is_public', 'Видимость', '/article-category/update-grid'),
+            Column::editableColumn($model, 'is_public', 'Видимость', '/article-category/update-grid'),
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

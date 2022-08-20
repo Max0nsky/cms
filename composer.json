@@ -22,7 +22,9 @@
         "kartik-v/yii2-grid": "^3.5",
         "kartik-v/yii2-editable": "^1.8",
         "costa-rico/yii2-images": "*",
-        "yiisoft/yii2-imagine": "^2.3"
+        "yiisoft/yii2-imagine": "^2.3",
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "kartik-v/yii2-date-range": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

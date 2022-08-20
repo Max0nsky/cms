@@ -2,11 +2,6 @@
 
 namespace common\components\Support;
 
-use kartik\editable\Editable;
-use Yii;
-use yii\helpers\Html;
-use yii\helpers\Url;
-
 class Support
 {
     const SIZE_COLUMN_IMG = 80;
@@ -45,45 +40,5 @@ class Support
             return $array;
         }
         return $array[$key];
-    }
-
-    public static function editableColumn($model, $attribute, $name, $actionPath)
-    {
-        return [
-            'attribute' => $attribute,
-            'class' => '\kartik\grid\EditableColumn',
-            'editableOptions' => [
-                'formOptions' => ['action' => [$actionPath]],
-                'header' => 'значение',
-                'inputType' => Editable::INPUT_CHECKBOX,
-                'options' => [
-                    'class' => 'new_class',
-                    'label' => $name,
-                ],
-                'pjaxContainerId' => 'pjax-table',
-            ],
-            'content' => self::getListYesNo($model->$attribute),
-            'format' => 'boolean',
-            'filter' => self::getListYesNo(),
-            'label' => $name,
-        ];
-    }
-
-    public static function imageColumn()
-    {
-        $size = self::SIZE_COLUMN_IMG;
-
-        return [
-            'label' => 'Изображение',
-            'format' => 'raw',
-            'options' => ['style' => 'width: ' . $size . 'px; max-width: ' . $size . 'px;'],
-            'contentOptions' => ['style' => 'width: ' . $size . 'px; max-width: ' . $size . 'px;'],
-            'value' => function ($model) {
-                $size = self::SIZE_COLUMN_IMG;
-                return Html::img(Url::toRoute($model->getImage()->getPath($size . 'x' . $size)), [
-                    'style' => 'width:' . $size . 'px;'
-                ]);
-            },
-        ];
     }
 }

@@ -4,16 +4,19 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\ArticleCategory;
 use common\models\User;
 
 class AdministratorSearch extends User
 {
+    public $created_at_start;
+    public $created_at_end;
+
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'email'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['username', 'email', 'created_at', 'updated_at'], 'safe'],
+            [['created_at_start', 'created_at_end'], 'safe'],
         ];
     }
 
@@ -32,7 +35,7 @@ class AdministratorSearch extends User
 
         $this->load($params);
         $this->status = 10;
-
+        
         if (!$this->validate()) {
             return $dataProvider;
         }
@@ -40,9 +43,15 @@ class AdministratorSearch extends User
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
         ]);
+
+        if(!empty($this->created_at_start)){
+            $query->andFilterWhere(['>=', 'created_at', strtotime($this->created_at_start)]);
+        }
+
+        if(!empty($this->created_at_end)){
+            $query->andFilterWhere(['<=', 'created_at', strtotime($this->created_at_end)]);
+        }
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'email', $this->email]);

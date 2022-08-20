@@ -1,10 +1,7 @@
 <?php
 
-use common\components\Support\Support;
-use common\models\Page;
+use common\components\Column\Column;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
 use kartik\grid\GridView;
 
 $this->title = 'Страницы';
@@ -28,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'name',
             'slug',
-            Support::editableColumn($model, 'is_public', 'Видимость', '/page/update-grid'),
+            Column::editableColumn($model, 'is_public', 'Видимость', '/page/update-grid'),
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',

@@ -1,9 +1,8 @@
 <?php
 
-use common\components\Support\Support;
+use common\components\Column\Column;
 use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 $this->title = 'Администраторы';
 $this->params['breadcrumbs'][] = $this->title;
@@ -19,21 +18,31 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <?php Pjax::begin(); ?>
+    <div class="row">
+        <div class="col-sm-12">
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'id',
-            'username',
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}',
-            ],
-        ],
-    ]); ?>
-    
-    <?php Pjax::end(); ?>
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    [
+                        'attribute' => 'id',
+                        'width' => '75px',
+                    ],
+
+                    'username',
+
+                    Column::dateRangeColumn($searchModel, 'created_at', 'created_at_start', 'created_at_end'),
+                    
+                    [
+                        'class' => 'yii\grid\ActionColumn',
+                        'template' => '{update} {delete}',
+                    ],
+                ],
+            ]);
+            ?>
+
+        </div>
+    </div>
 
 </div>

@@ -236,7 +236,26 @@ a.desc:after {
   border-radius: 3px;
 }
 
-.image-text-input{
+.image-text-input {
   margin-top: 2px;
   border-radius: 5px !important;
+}
+
+.kv-drp-container .range-value {
+  background-color: #fff;
+}
+
+.kv-drp-container .kv-clear {
+  padding: 0 0.3rem;
+  font-size: 1.8rem;
+  right: 1rem;
+  line-height: 1.3rem;
+}
+
+.kv-drp-container .left-ind {
+  display: none;
+}
+
+.kv-drp-container .right-ind .caret {
+  display: none;
 }
