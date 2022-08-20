@@ -51,7 +51,7 @@ class Column
     {
         return [
             'attribute' => $attribute,
-            'size' => $size,
+            'width' => $size,
             'value' => function ($model) use ($attribute) {
                 return date('d.m.Y', $model->$attribute);
             },

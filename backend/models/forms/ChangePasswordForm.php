@@ -18,9 +18,6 @@ class ChangePasswordForm extends Model {
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels() {
         return [
             'new_password' => 'Новый пароль',

@@ -50,7 +50,7 @@ class AdministratorSearch extends User
         }
 
         if(!empty($this->created_at_end)){
-            $query->andFilterWhere(['<=', 'created_at', strtotime($this->created_at_end)]);
+            $query->andFilterWhere(['<=', 'created_at', strtotime($this->created_at_end . ' +1 day')]);
         }
 
         $query->andFilterWhere(['like', 'username', $this->username])

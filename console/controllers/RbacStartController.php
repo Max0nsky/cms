@@ -31,17 +31,17 @@ class RbacStartController extends Controller
         $auth->add($admin);
 
         // Право администрирования
-        $permit = $auth->createPermission('canAdmin');
-        $permit->description = 'Администрирование';
-        $auth->add($permit);
+        $permitCanAdmin = $auth->createPermission('canAdmin');
+        $permitCanAdmin->description = 'Администрирование';
+        $auth->add($permitCanAdmin);
 
         $user = $auth->getRole('user');
         $manager = $auth->getRole('manager');
         $admin = $auth->getRole('admin');
-        $permit = $auth->getPermission('canAdmin');  
+        $permitCanAdmin = $auth->getPermission('canAdmin');  
 
-        $auth->addChild($admin, $permit);
-        $auth->addChild($manager, $permit);
+        $auth->addChild($admin, $permitCanAdmin);
+        $auth->addChild($manager, $permitCanAdmin);
 
         echo "RBAC role init \n";
     }

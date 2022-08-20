@@ -3,13 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$seo = $model->getSeo();
-
 ?>
 
 <div class="article-form">
 <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <?php $form = ActiveForm::begin(); ?>
             <div class="nav-tabs-custom">
 
@@ -21,7 +19,9 @@ $seo = $model->getSeo();
                     <div class="tab-pane active" id="tab_1">
                         <div class="row">
                             <div class="col-sm-10">
-                                <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+                                <?= $form->field($model, 'email')->textInput(['maxlength' => true])->label('Email (Логин администратора)') ?>
+                                <?= $form->field($model, 'password')->textInput(['maxlength' => true])->label('Пароль')  ?>
+                                <?= $form->field($model, 'repeat_password')->textInput(['maxlength' => true])->label('Повторите пароль')  ?>
                             </div>
                         </div>
                     </div>
