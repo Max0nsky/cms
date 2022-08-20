@@ -4,15 +4,16 @@ namespace common\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Article;
+use common\models\ArticleCategory;
+use common\models\User;
 
-class ArticleSearch extends Article
+class AdministratorSearch extends User
 {
     public function rules()
     {
         return [
-            [['id', 'article_category_id', 'created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
-            [['name', 'slug', 'text_short', 'text'], 'safe'],
+            [['id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['username', 'email'], 'safe'],
         ];
     }
 
@@ -23,13 +24,14 @@ class ArticleSearch extends Article
 
     public function search($params)
     {
-        $query = Article::find();
+        $query = User::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         $this->load($params);
+        $this->status = 10;
 
         if (!$this->validate()) {
             return $dataProvider;
@@ -37,17 +39,13 @@ class ArticleSearch extends Article
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'article_category_id' => $this->article_category_id,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'is_public' => $this->is_public,
-            'is_delete' => $this->is_delete,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'text_short', $this->text_short])
-            ->andFilterWhere(['like', 'text', $this->text]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;
     }

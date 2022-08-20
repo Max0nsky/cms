@@ -16,6 +16,7 @@
                     ],
                     ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page']],
                     ['label' => 'Настройки', 'icon' => 'cog', 'url' => ['/site/settings']],
+                    ['label' => 'Администраторы', 'icon' => 'user', 'url' => ['/administrator']],
                     ['label' => 'Sitemap', 'icon' => 'file-code-o', 'url' => ['/site/sitemap']],
                     ['label' => 'Служебное', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
