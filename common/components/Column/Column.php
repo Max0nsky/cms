@@ -11,8 +11,6 @@ use Yii;
 
 class Column
 {
-    const SIZE_COLUMN_IMG = 80;
-
     public static function editableColumn($model, $attribute, $name, $actionPath)
     {
         return [
@@ -34,29 +32,26 @@ class Column
         ];
     }
 
-    public static function imageColumn()
+    public static function imageColumn($size = '80px')
     {
-        $size = self::SIZE_COLUMN_IMG;
-
         return [
             'label' => 'Изображение',
             'format' => 'raw',
-            'options' => ['style' => 'width: ' . $size . 'px; max-width: ' . $size . 'px;'],
-            'contentOptions' => ['style' => 'width: ' . $size . 'px; max-width: ' . $size . 'px;'],
-            'value' => function ($model) {
-                $size = self::SIZE_COLUMN_IMG;
+            'options' => ['style' => 'width: ' . $size . '; max-width: ' . $size . ';'],
+            'contentOptions' => ['style' => 'width: ' . $size . '; max-width: ' . $size . ';'],
+            'value' => function ($model) use ($size) {
                 return Html::img(Url::toRoute($model->getImage()->getPath($size . 'x' . $size)), [
-                    'style' => 'width:' . $size . 'px;'
+                    'style' => 'width:' . $size . ';'
                 ]);
             },
         ];
     }
 
-    public static function dateRangeColumn($searchModel, $attribute, $attribute_start, $attribute_send, $width = '250px')
+    public static function dateRangeColumn($searchModel, $attribute, $attribute_start, $attribute_send, $size = '250px')
     {
         return [
             'attribute' => $attribute,
-            'width' => $width,
+            'size' => $size,
             'value' => function ($model) use ($attribute) {
                 return date('d.m.Y', $model->$attribute);
             },
