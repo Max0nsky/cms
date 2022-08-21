@@ -4,7 +4,6 @@ use yii\helpers\Html;
 
 $this->title = 'Изменить администратора: ' . $model->username;
 $this->params['breadcrumbs'][] = ['label' => 'Администраторы', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->username, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="article-update">

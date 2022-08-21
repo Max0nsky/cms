@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use backend\models\forms\SignupForm;
+use backend\models\forms\AdministratorForm;
 use common\models\search\AdministratorSearch;
 use common\models\User;
 use yii\web\NotFoundHttpException;
@@ -39,7 +39,8 @@ class AdministratorController extends AppController
 
     public function actionCreate()
     {
-        $model = new SignupForm();
+        $model = new AdministratorForm();
+        $model->scenario = AdministratorForm::SCENARIO_CREATE;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->signup()) {
@@ -54,7 +55,18 @@ class AdministratorController extends AppController
 
     public function actionUpdate($id)
     {
-        // TODO
+        $model = new AdministratorForm();
+        $model->loadUserModel($this->findModel($id));
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->update()) {
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     public function actionDelete($id)
