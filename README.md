@@ -6,17 +6,21 @@
     <br>
 </p>
 
-**TODO: A project initialization command with migrations is being created!**
-
+INSRTUCTIONS
+-------------------
 Please, use commands in project root directory after cloning:
 ```bash
 composer install
 php init
+php yii start
 ```
-Do a database import from a folder:
-```
-/db/cms.sql
-```
+-------------------
+CONFIGURATION
+-------------------
+PHP 7.3 
+<br>
+MySQL 5.7
+
 -------------------
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
