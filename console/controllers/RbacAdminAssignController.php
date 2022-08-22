@@ -12,14 +12,12 @@ use yii\helpers\Console;
 
 class RbacAdminAssignController extends Controller
 {
-    public function actionInit($id)
+    const DEFAULT_USER_EMAIL = 'admin@admin.ru';
+    const DEFAULT_USER_PASSWORD = 'changethispassword';
+
+    public function actionInit($id = NULL)
     {
-        // Проверяем обязательный параметр id
-        if (!$id || is_int($id)) {
-            // throw new \yii\base\InvalidConfigException("param 'id' must be set");
-            $this->stdout("Param 'id' must be set!\n", Console::BG_RED);
-            return ExitCode::UNSPECIFIED_ERROR;
-        }
+        $id = ($id == NULL) ? $this->idFirstAdmin() : $id;
 
         // Есть ли пользователь с таким id
         $user = (new User())->findIdentity($id);
@@ -43,5 +41,22 @@ class RbacAdminAssignController extends Controller
         // Выводим сообщение об успехе и возвращаем соответствующий код
         $this->stdout("Done!\n", Console::BOLD);
         return ExitCode::OK;
+    }
+
+    private function idFirstAdmin()
+    {
+        $user = User::find()->where(['email' => self::DEFAULT_USER_EMAIL])->one();
+
+        if (empty($user)) {
+            $user = new User();
+            $user->email = self::DEFAULT_USER_EMAIL;
+            $user->setPassword(self::DEFAULT_USER_PASSWORD);
+            $user->generateAuthKey();
+            $user->username = $user->email;
+            $user->status = User::STATUS_ACTIVE;
+            $user->save();
+        }
+
+        return $user->id;
     }
 }

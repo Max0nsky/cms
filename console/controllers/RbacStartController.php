@@ -15,33 +15,37 @@ class RbacStartController extends Controller
     {
         $auth = Yii::$app->authManager;
 
-        // Добавление роли "user"
-        $user = $auth->createRole('user');
-        $user->description = 'Пользователь';
-        $auth->add($user);
+        try {
+            // Добавление роли "user"
+            $user = $auth->createRole('user');
+            $user->description = 'Пользователь';
+            $auth->add($user);
 
-        // Добавление роли "user"
-        $manager = $auth->createRole('manager');
-        $manager->description = 'Менеджер';
-        $auth->add($manager);
+            // Добавление роли "manager"
+            $manager = $auth->createRole('manager');
+            $manager->description = 'Менеджер';
+            $auth->add($manager);
 
-        // Добавление роли "admin"
-        $admin = $auth->createRole('admin');
-        $admin->description = 'Администратор';
-        $auth->add($admin);
+            // Добавление роли "admin"
+            $admin = $auth->createRole('admin');
+            $admin->description = 'Администратор';
+            $auth->add($admin);
 
-        // Право администрирования
-        $permitCanAdmin = $auth->createPermission('canAdmin');
-        $permitCanAdmin->description = 'Администрирование';
-        $auth->add($permitCanAdmin);
+            // Право администрирования
+            $permitCanAdmin = $auth->createPermission('canAdmin');
+            $permitCanAdmin->description = 'Администрирование';
+            $auth->add($permitCanAdmin);
 
-        $user = $auth->getRole('user');
-        $manager = $auth->getRole('manager');
-        $admin = $auth->getRole('admin');
-        $permitCanAdmin = $auth->getPermission('canAdmin');  
+            $user = $auth->getRole('user');
+            $manager = $auth->getRole('manager');
+            $admin = $auth->getRole('admin');
+            $permitCanAdmin = $auth->getPermission('canAdmin');
 
-        $auth->addChild($admin, $permitCanAdmin);
-        $auth->addChild($manager, $permitCanAdmin);
+            $auth->addChild($admin, $permitCanAdmin);
+            $auth->addChild($manager, $permitCanAdmin);
+        } catch (\Throwable $th) {
+            echo "RBAC role not init in this moment:( \n";
+        }
 
         echo "RBAC role init \n";
     }
