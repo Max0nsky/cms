@@ -6,6 +6,8 @@
     <br>
 </p>
 
+**TODO: A project initialization team with migrations is being created!**
+
 Please, use commands in project root directory after cloning:
 ```bash
 composer install
