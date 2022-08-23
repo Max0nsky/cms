@@ -7,7 +7,7 @@ use kartik\grid\GridView;
 $this->title = 'Страницы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="page-index">
+<div class="item-index">
 
     <div class="row head-page-content">
         <div class="col-sm-10">

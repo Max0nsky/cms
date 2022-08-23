@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 
-<div class="article-form">
+<div class="item-form">
     <div class="row">
         <div class="col-md-6">
             <?php $form = ActiveForm::begin(); ?>

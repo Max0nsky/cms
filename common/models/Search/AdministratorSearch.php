@@ -35,7 +35,15 @@ class AdministratorSearch extends User
 
         $this->load($params);
         $this->status = 10;
-        
+
+        if (!empty($this->created_at) && (empty($this->created_at_start) || empty($this->created_at_start))) {
+            $explodedDate =  explode(' - ', $this->created_at);
+            if (count($explodedDate) == 2) {
+                $this->created_at_start = trim($explodedDate[0]);
+                $this->created_at_end = trim($explodedDate[1]);
+            }
+        }
+
         if (!$this->validate()) {
             return $dataProvider;
         }
@@ -45,11 +53,11 @@ class AdministratorSearch extends User
             'status' => $this->status,
         ]);
 
-        if(!empty($this->created_at_start)){
+        if (!empty($this->created_at_start)) {
             $query->andFilterWhere(['>=', 'created_at', strtotime($this->created_at_start)]);
         }
 
-        if(!empty($this->created_at_end)){
+        if (!empty($this->created_at_end)) {
             $query->andFilterWhere(['<=', 'created_at', strtotime($this->created_at_end . ' +1 day')]);
         }
 

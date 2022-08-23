@@ -6,7 +6,7 @@ $this->title = 'Создать раздел';
 $this->params['breadcrumbs'][] = ['label' => 'Разделы статей', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="article-create">
+<div class="item-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -7,7 +7,7 @@ use yii\helpers\Html;
 $this->title = 'Администраторы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="article-index">
+<div class="item-index">
 
     <div class="row head-page-content">
         <div class="col-sm-10">

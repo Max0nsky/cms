@@ -16,6 +16,7 @@ backend\assets\AdminLteAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="icon" href="/favicon.ico" /> 
     <?php $this->head() ?>
 </head>
 

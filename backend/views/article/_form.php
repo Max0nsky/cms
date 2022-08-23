@@ -8,7 +8,7 @@ $seo = $model->getSeo();
 ?>
 
 <div class="article-form">
-<div class="row">
+    <div class="row">
         <div class="col-md-12">
             <?php $form = ActiveForm::begin(); ?>
             <div class="nav-tabs-custom">

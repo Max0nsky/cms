@@ -6,7 +6,7 @@ $this->title = 'Изменить администратора: ' . $model->usern
 $this->params['breadcrumbs'][] = ['label' => 'Администраторы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Изменить';
 ?>
-<div class="article-update">
+<div class="item-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

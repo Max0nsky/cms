@@ -7,7 +7,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => ['index']]
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Изменить';
 ?>
-<div class="article-update">
+<div class="item-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

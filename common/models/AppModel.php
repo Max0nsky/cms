@@ -13,7 +13,7 @@ abstract class AppModel extends ActiveRecord
     const IMG_HEIGHT = 900;
     const IMG_NAME_DEFAULT = 'preview';
 
-    public function uploadImage(UploadedFile $imagesContainer, string $imageName = self::IMG_NAME_DEFAULT, int $width = self::IMG_WIDTH, int $height = self::IMG_HEIGHT)
+    public function uploadImage(UploadedFile $imagesContainer = NULL, string $imageName = self::IMG_NAME_DEFAULT, int $width = self::IMG_WIDTH, int $height = self::IMG_HEIGHT)
     {
         if (!empty($imagesContainer)) {
 

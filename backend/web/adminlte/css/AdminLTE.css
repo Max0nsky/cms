@@ -2550,7 +2550,7 @@ a:focus {
   border-color: transparent;
 }
 .nav-tabs-custom > .nav-tabs > li.active {
-  border-top-color: #5967a9;
+  /* border-top-color: #5967a9; */
 }
 .nav-tabs-custom > .nav-tabs > li.active > a,
 .nav-tabs-custom > .nav-tabs > li.active:hover > a {

@@ -102,7 +102,7 @@ a.desc:after {
 }
 
 .save-btn {
-  margin: 10px !important;
+  margin: 10px 10px 20px 10px !important;
 }
 
 .breadcrumb {
@@ -176,7 +176,7 @@ a.desc:after {
 }
 
 .main-header .logo {
-  background: linear-gradient(45deg, #7782d9ee, #7e8cdd);
+  background: linear-gradient(45deg, #7786cf, #7786cf);
 }
 
 .kv-grid-container {
@@ -199,7 +199,8 @@ a.desc:after {
 
 .nav-tabs li.active {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
+  border-top-color: #fff !important;
 }
 
 .nav-tabs li {
@@ -258,4 +259,49 @@ a.desc:after {
 
 .kv-drp-container .right-ind .caret {
   display: none;
+}
+
+.content h1 {
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+}
+
+.content .item-form {
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #d9d9d966;
+  border-top-color: #6d92d5e0;
+}
+
+.nav-tabs-custom > .nav-tabs > li {
+  border-top: 0px solid transparent !important;
+  margin-bottom: -2px;
+  margin-right: 5px;
+}
+
+.btn-primary {
+  background-color: #7b8cdb !important;
+  border-color: #6d7cc3 !important;
+}
+
+.settings-tabs {
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #d9d9d966;
+  border-top-color: #6d92d5e0;
+}
+
+.nav-tabs-custom {
+  margin-bottom: 0px !important;
+  background: #fff;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  border-radius: 3px;
+}
+
+.create-btn {
+  margin-bottom: 5px;
 }

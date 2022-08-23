@@ -20,11 +20,6 @@ $user = Yii::$app->user->identity;
 
             <ul class="nav navbar-nav">
 
-                <? //= $this->render('elements/_messages-menu', compact('directoryAsset')) 
-                ?>
-                <? //= $this->render('elements/_tasks-menu', compact('directoryAsset')) 
-                ?>
-
                 <?= $this->render('elements/_notifications-menu', compact('directoryAsset')) ?>
 
                 <li class="dropdown user user-menu">
@@ -41,7 +36,7 @@ $user = Yii::$app->user->identity;
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <button type="button"class="btn btn-default btn-flat" data-toggle="modal" data-target="#modal-pass">Смена пароля</button>
+                                <button type="button" class="btn btn-default btn-flat" data-toggle="modal" data-target="#modal-pass">Смена пароля</button>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(

@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 
-<div class="page-form">
+<div class="item-form">
 
     <div class="row">
         <div class="col-md-12">
