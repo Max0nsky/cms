@@ -7,7 +7,7 @@ $seo = $model->getSeo();
 
 ?>
 
-<div class="article-form">
+<div class="item-form">
     <div class="row">
         <div class="col-md-12">
             <?php $form = ActiveForm::begin(); ?>
@@ -21,14 +21,16 @@ $seo = $model->getSeo();
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                         <div class="row">
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                                 <?= $form->field($model, 'slug')->textInput(['readonly' => true]) ?>
                                 <?= $form->field($model, 'text_short')->textarea(['rows' => 3]) ?>
                                 <?= $form->field($model, 'text')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <?= $form->field($model, 'is_public', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
+                                <?= $form->field($model, 'image')->fileInput() ?>
+                                <?= $this->render('../common/_view_images', compact('model')); ?>
                             </div>
                         </div>
                     </div>

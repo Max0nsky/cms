@@ -69,6 +69,7 @@ class Article extends AppModel
             'created_at' => 'Добавление',
             'updated_at' => 'Редактирование',
             'is_public' => 'Видимость',
+            'image' => 'Изображение',
         ];
     }
 
