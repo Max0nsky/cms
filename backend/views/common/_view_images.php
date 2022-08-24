@@ -21,7 +21,9 @@ use yii\helpers\Url;
                     <a href="<?= $image->getPathToOrigin() ?>" data-rel="lightcase:g">
                         <img class="image-for-model" src="<?= $image->getPath('200') ?>">
                     </a>
-                    <input type="text" id="imagename-name" class="form-control image-text-input" name="ImageNames[<?= $image->id ?>]" value="<?=$image->text?>" maxlength="254">
+                    <?php if (!empty($image->id)) : ?>
+                        <input type="text" id="imagename-name" class="form-control image-text-input" name="ImageNames[<?= $image->id ?>]" value="<?= $image->text ?>" maxlength="254">
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

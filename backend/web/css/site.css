@@ -305,3 +305,11 @@ a.desc:after {
 .create-btn {
   margin-bottom: 5px;
 }
+
+.form-group {
+  margin-bottom: 0px;
+}
+
+.content-wrapper {
+  background-color: #e4ecf7 !important;
+}
