@@ -6,6 +6,7 @@ use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
 use common\components\Seo\SeoBehavior;
+use paulzi\adjacencyList\AdjacencyListBehavior;
 use Yii;
 
 class Category extends AppModel
@@ -34,6 +35,9 @@ class Category extends AppModel
             'ImageBehave' => [
                 'class' => ImageBehave::class,
             ],
+            'AdjacencyListBehavior' => [
+                'class' => AdjacencyListBehavior::class,
+            ],
         ];
     }
 
@@ -43,6 +47,7 @@ class Category extends AppModel
             [['name',], 'required'],
             [['name', 'slug'], 'string', 'max' => 254],
             [['parent_id'], 'integer'],
+            [['sort'], 'integer'],
             [['created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
             [
                 ['images'],
@@ -82,6 +87,11 @@ class Category extends AppModel
     public function getGoods()
     {
         return $this->hasMany(Good::class, ['category_id' => 'id']);
+    }
+
+    public static function find()
+    {
+        return new CategoryQuery(get_called_class());
     }
 
     public static function findWhereFront()
