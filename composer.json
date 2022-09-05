@@ -26,9 +26,7 @@
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-date-range": "dev-master",
         "kartik-v/yii2-widget-fileinput": "dev-master",
-        "paulzi/yii2-adjacency-list": "^2.2",
-        "wbraganca/yii2-fancytree-widget": "*",
-        "kartik-v/yii2-widget-select2": "*"
+        "paulzi/yii2-adjacency-list": "^2.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

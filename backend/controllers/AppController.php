@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+use common\components\Support\Support;
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 
 class AppController extends Controller
 {
@@ -11,7 +13,7 @@ class AppController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::class,
+                'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'actions' => ['index', 'view', 'create', 'update', 'delete', 'update-grid', 'image-delete'],

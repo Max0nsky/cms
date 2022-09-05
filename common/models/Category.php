@@ -7,7 +7,6 @@ use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
 use common\components\Seo\SeoBehavior;
 use paulzi\adjacencyList\AdjacencyListBehavior;
-use yii\db\Query;
 use Yii;
 
 class Category extends AppModel
@@ -98,89 +97,5 @@ class Category extends AppModel
     public static function findWhereFront()
     {
         return self::find()->where(['is_public' => 1, 'is_delete' => 0]);
-    }
-
-    public static function getUpperLevelTree($id = null)
-    {
-        $tree = (new Query())
-            ->select(['id AS key', 'name AS title'])
-            ->from(self::tableName())
-            ->where(['parent_id' => $id])
-            ->orderBy(['sort' => SORT_ASC])
-            ->all();
-
-        $tree = array_map(function (&$value) {
-            if (!empty($value)) {
-                $value['folder'] = true;
-                $value['lazy'] = true;
-
-                return $value;
-            }
-        }, $tree);
-
-        return $tree;
-    }
-
-    public static function treeUp($id)
-    {
-        $model = self::findOne($id);
-
-        $up = self::find()
-            ->where(['<', 'sort', $model->sort])
-            ->limit(1)
-            ->andWhere(['parent_id' => $model->parent_id, 'is_delete' => 0])
-            ->orderBy(['sort' => SORT_DESC])
-            ->one();
-
-        if (!empty($up)) {
-            $sort = $model->sort;
-            $model->sort = $up->sort;
-            $up->sort = $sort;
-            $model->save(false);
-            $up->save(false);
-
-            self::setSortBrand($model->parent_id);
-
-            return true;
-        }
-        return false;
-    }
-
-    public static function treeDown($id)
-    {
-        $model = self::findOne($id);
-
-        $up = self::find()
-            ->where(['>', 'sort', $model->sort])
-            ->andWhere(['parent_id' => $model->parent_id])
-            ->limit(1)
-            ->orderBy(['sort' => SORT_ASC])
-            ->one();
-
-        if (!empty($up)) {
-            $sort = $model->sort;
-            $model->sort = $up->sort;
-            $up->sort = $sort;
-            $model->save(false);
-            $up->save(false);
-
-            self::setSortBrand($model->parent_id);
-
-            return true;
-        }
-        return false;
-    }
-
-    private static function setSortBrand($parendId)
-    {
-        $models = self::find()->where(['parent_id' => $parendId])->orderBy(['sort' => SORT_ASC])->all();
-
-        $i = 0;
-
-        foreach ($models as $model) {
-            $model->sort = $i;
-            $model->save(false);
-            $i++;
-        }
     }
 }
