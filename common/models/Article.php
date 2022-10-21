@@ -6,6 +6,7 @@ use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
 use common\components\Seo\SeoBehavior;
+use common\components\Image\ImageNameBehavior;
 use Yii;
 
 class Article extends AppModel
@@ -33,6 +34,9 @@ class Article extends AppModel
             ],
             'ImageBehave' => [
                 'class' => ImageBehave::class,
+            ],
+            'ImageNameBehavior' => [
+                'class' => ImageNameBehavior::class,
             ],
         ];
     }

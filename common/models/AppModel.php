@@ -3,14 +3,15 @@
 namespace common\models;
 
 use \yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Inflector;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
 
 abstract class AppModel extends ActiveRecord
 {
-    const IMG_WIDTH = 1200;
-    const IMG_HEIGHT = 900;
+    const IMG_WIDTH = 1920;
+    const IMG_HEIGHT = 1080;
     const IMG_NAME_DEFAULT = 'preview';
 
     public function uploadImage(UploadedFile $imagesContainer = NULL, string $imageName = self::IMG_NAME_DEFAULT, int $width = self::IMG_WIDTH, int $height = self::IMG_HEIGHT)
@@ -32,5 +33,10 @@ abstract class AppModel extends ActiveRecord
     public static function generateSlug($name)
     {
         return Inflector::slug($name);
+    }
+
+    public static function getListForSelect($attributeName = "")
+    {
+        return !empty($attributeName) ? ArrayHelper::map(self::find()->all(), 'id', $attributeName) : [];
     }
 }

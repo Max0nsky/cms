@@ -1,17 +1,19 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\modules\article\controllers;
 
+use backend\controllers\AppController;
+use backend\modules\article\models\search\ArticleCategorySearch;
 use common\components\Support\Support;
-use common\models\Article;
-use common\models\search\ArticleSearch;
+use common\models\ArticleCategory;
 use kartik\grid\EditableColumnAction;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 use Yii;
 
-class ArticleController extends AppController
+class ArticleCategoryController extends AppController
 {
     public function behaviors()
     {
@@ -30,7 +32,7 @@ class ArticleController extends AppController
 
     public function actionIndex()
     {
-        $searchModel = new ArticleSearch();
+        $searchModel = new ArticleCategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -39,22 +41,16 @@ class ArticleController extends AppController
         ]);
     }
 
-
-    public function actionView($id)
-    {
-        return $this->redirect(['index']);
-    }
-
     public function actionCreate()
     {
-        $model = new Article();
+        $model = new ArticleCategory();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->save();
+            $model->uploadImage(UploadedFile::getInstance($model, 'image'));
+
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -66,8 +62,12 @@ class ArticleController extends AppController
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost && $model->load($this->request->post())) {
+
+            $model->save();
+            $model->uploadImage(UploadedFile::getInstance($model, 'image'));
+
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -77,18 +77,22 @@ class ArticleController extends AppController
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->removeImages();
+        $model->delete();
+
+        Yii::$app->session->setFlash('warning', "Раздел $model->name удален");
 
         return $this->redirect(['index']);
     }
 
     protected function findModel($id)
     {
-        if (($model = Article::findOne(['id' => $id])) !== null) {
+        if (($model = ArticleCategory::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested Article does not exist.');
+        throw new NotFoundHttpException('The requested ArticleCategory does not exist.');
     }
 
     public function actions()
@@ -96,7 +100,7 @@ class ArticleController extends AppController
         return ArrayHelper::merge(parent::actions(), [
             'update-grid' => [
                 'class' => EditableColumnAction::class,
-                'modelClass' => Article::class,
+                'modelClass' => ArticleCategory::class,
                 'outputValue' => function ($model, $attribute, $key, $index) {
                     switch ($attribute) {
                         case 'is_public':

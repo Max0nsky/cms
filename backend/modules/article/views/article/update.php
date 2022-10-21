@@ -4,8 +4,7 @@ use yii\helpers\Html;
 
 $this->title = 'Изменить статью: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Изменить';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="item-update">
 

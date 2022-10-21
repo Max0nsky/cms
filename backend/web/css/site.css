@@ -313,3 +313,7 @@ a.desc:after {
 .content-wrapper {
   background-color: #e4ecf7 !important;
 }
+
+.delete-image {
+  position: absolute;
+}

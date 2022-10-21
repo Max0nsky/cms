@@ -3,8 +3,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$seo = $model->getSeo();
-
 ?>
 
 <div class="item-form">
@@ -24,18 +22,17 @@ $seo = $model->getSeo();
                             <div class="col-sm-9">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
                                 <?= $form->field($model, 'slug')->textInput(['readonly' => true]) ?>
-                                <?= $form->field($model, 'text_short')->textarea(['rows' => 3]) ?>
-                                <?= $form->field($model, 'text')->widget(common\widgets\CkeditorSite::class, []) ?>
+                                <?= $form->field($model, 'description')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
                             <div class="col-sm-3">
                                 <?= $form->field($model, 'is_public', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
                                 <?= $form->field($model, 'image')->fileInput() ?>
-                                <?= $this->render('../common/_view_images', compact('model')); ?>
+                                <?= $this->render('/common/_view_image', compact('model')); ?>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab_2">
-                        <?= $this->render('../common/_seo', compact('form', 'model')); ?>
+                        <?= $this->render('/common/_seo', compact('form', 'model')); ?>
                     </div>
                 </div>
 

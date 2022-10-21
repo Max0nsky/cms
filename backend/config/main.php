@@ -18,6 +18,9 @@ return [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ],
+        'article' => [
+            'class' => 'backend\modules\article\Module',
+        ],
     ],
     'components' => [
         'view' => [

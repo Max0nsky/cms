@@ -10,8 +10,8 @@
                         'label' => 'Блог',
                         'icon' => 'list',
                         'items' => [
-                            ['label' => 'Разделы', 'icon' => 'folder', 'url' => ['/article-category']],
-                            ['label' => 'Статьи', 'icon' => 'list-alt', 'url' => ['/article']],
+                            ['label' => 'Разделы', 'icon' => 'folder', 'url' => ['/article/article-category']],
+                            ['label' => 'Статьи', 'icon' => 'list-alt', 'url' => ['/article/article']],
                         ],
                     ],
                     ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page']],

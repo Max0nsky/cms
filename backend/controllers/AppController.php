@@ -2,10 +2,9 @@
 
 namespace backend\controllers;
 
-use common\components\Support\Support;
+use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 
 class AppController extends Controller
 {
@@ -13,7 +12,7 @@ class AppController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'actions' => ['index', 'view', 'create', 'update', 'delete', 'update-grid', 'image-delete'],
@@ -23,5 +22,19 @@ class AppController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function actionImageDelete($id_model, $id_img)
+    {
+        $model = $this->findModel($id_model);
+
+        foreach ($model->getImages() as $image) {
+            if ($image->id == $id_img) {
+                $model->removeImage($image);
+                break;
+            }
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 }

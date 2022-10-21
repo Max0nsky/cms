@@ -4,8 +4,6 @@ namespace common\components\Support;
 
 class Support
 {
-    const SIZE_COLUMN_IMG = 80;
-
     /**
      * Заменяет элементы текста по типу:
      * {слово1, слово2, слово3, слово4}
@@ -35,7 +33,7 @@ class Support
 
     public static function getListYesNo($key = false)
     {
-        $array = ['Нет', 'Да',];
+        $array = ['Нет', 'Да'];
         if (is_bool($key)) {
             return $array;
         }
