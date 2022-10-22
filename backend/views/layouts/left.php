@@ -14,7 +14,7 @@
                             ['label' => 'Статьи', 'icon' => 'list-alt', 'url' => ['/article/article']],
                         ],
                     ],
-                    ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page']],
+                    ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page/page']],
                     ['label' => 'Настройки', 'icon' => 'cog', 'url' => ['/site/settings']],
                     ['label' => 'Администраторы', 'icon' => 'user', 'url' => ['/administrator']],
                     ['label' => 'Sitemap', 'icon' => 'file-code-o', 'url' => ['/site/sitemap']],

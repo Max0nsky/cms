@@ -1,10 +1,11 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\modules\page\controllers;
 
+use backend\controllers\AppController;
+use backend\modules\page\models\search\PageSearch;
 use common\components\Support\Support;
 use common\models\Page;
-use common\models\search\PageSearch;
 use kartik\grid\EditableColumnAction;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -39,19 +40,13 @@ class PageController extends AppController
         ]);
     }
 
-
-    public function actionView($id)
-    {
-        return $this->redirect(['index']);
-    }
-
     public function actionCreate()
     {
         $model = new Page();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -67,7 +62,7 @@ class PageController extends AppController
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [

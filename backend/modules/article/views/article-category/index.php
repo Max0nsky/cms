@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             Column::imageColumn(),
             'name',
             'slug',
-            Column::editableColumn($model, 'is_public', 'Видимость', '/article-category/update-grid'),
+            Column::editableColumn($model, 'is_public', 'Видимость', '/article/article-category/update-grid'),
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
