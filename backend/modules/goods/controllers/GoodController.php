@@ -1,11 +1,11 @@
 <?php
 
-namespace backend\modules\article\controllers;
+namespace backend\modules\goods\controllers;
 
 use backend\controllers\AppController;
-use backend\modules\article\models\search\ArticleSearch;
+use backend\modules\goods\models\search\GoodSearch;
 use common\components\Support\Support;
-use common\models\Article;
+use common\models\Good;
 use kartik\grid\EditableColumnAction;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,7 +13,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 use Yii;
 
-class ArticleController extends AppController
+class GoodController extends AppController
 {
     public function behaviors()
     {
@@ -32,7 +32,7 @@ class ArticleController extends AppController
 
     public function actionIndex()
     {
-        $searchModel = new ArticleSearch();
+        $searchModel = new GoodSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -43,13 +43,12 @@ class ArticleController extends AppController
 
     public function actionCreate()
     {
-        $model = new Article();
+        $model = new Good();
 
-        if ($model->load($this->request->post()) && $model->save()) {
+        if ($model->load($this->request->post()) && $model->validate() && $model->save()) {
+
             $model->uploadImage(UploadedFile::getInstance($model, 'image'));
             return $this->redirect(['index']);
-        } else {
-            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
@@ -62,6 +61,7 @@ class ArticleController extends AppController
         $model = $this->findModel($id);
 
         if ($model->load($this->request->post()) && $model->save()) {
+
             $model->uploadImage(UploadedFile::getInstance($model, 'image'));
             return $this->redirect(['update', 'id' => $model->id]);
         }
@@ -77,18 +77,18 @@ class ArticleController extends AppController
         $model->removeImages();
         $model->delete();
 
-        Yii::$app->session->setFlash('warning', "Статья $model->name удалена");
+        Yii::$app->session->setFlash('warning', "Товар $model->name удален");
 
         return $this->redirect(['index']);
     }
 
     protected function findModel($id)
     {
-        if (($model = Article::findOne(['id' => $id])) !== null) {
+        if (($model = Good::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested Article does not exist.');
+        throw new NotFoundHttpException('The requested good does not exist.');
     }
 
     public function actions()
@@ -96,7 +96,7 @@ class ArticleController extends AppController
         return ArrayHelper::merge(parent::actions(), [
             'update-grid' => [
                 'class' => EditableColumnAction::class,
-                'modelClass' => Article::class,
+                'modelClass' => Page::class,
                 'outputValue' => function ($model, $attribute, $key, $index) {
                     switch ($attribute) {
                         case 'is_public':

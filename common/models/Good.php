@@ -5,6 +5,7 @@ namespace common\models;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
+use common\components\Image\ImageNameBehavior;
 use common\components\Seo\SeoBehavior;
 use Yii;
 
@@ -34,6 +35,9 @@ class Good extends AppModel
             'ImageBehave' => [
                 'class' => ImageBehave::class,
             ],
+            'ImageNameBehavior' => [
+                'class' => ImageNameBehavior::class,
+            ],
         ];
     }
 
@@ -42,6 +46,7 @@ class Good extends AppModel
         return [
             [['name', 'price'], 'required'],
             [['name', 'slug'], 'string', 'max' => 254],
+            [['description'], 'string'],
             [['price', 'old_price'], 'number'],
             [['category_id'], 'integer'],
             [['created_at', 'updated_at', 'is_public', 'is_delete'], 'integer'],
@@ -64,6 +69,8 @@ class Good extends AppModel
             'name' => 'Наименование',
             'slug' => 'URL',
             'price' => 'Цена',
+            'description' => 'Описание',
+            'images' => 'Изображения',
             'old_price' => 'Старая цена',
             'category_id' => 'Категория',
             'created_at' => 'Добавление',

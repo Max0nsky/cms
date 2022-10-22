@@ -15,6 +15,7 @@
                         ],
                     ],
                     ['label' => 'Страницы', 'icon' => 'file', 'url' => ['/page/page']],
+                    ['label' => 'Товары', 'icon' => 'shopping-cart', 'url' => ['/goods/good']],
                     ['label' => 'Настройки', 'icon' => 'cog', 'url' => ['/site/settings']],
                     ['label' => 'Администраторы', 'icon' => 'user', 'url' => ['/administrator']],
                     ['label' => 'Sitemap', 'icon' => 'file-code-o', 'url' => ['/site/sitemap']],

@@ -5,8 +5,9 @@ namespace common\models;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use rico\yii2images\behaviors\ImageBehave;
-use common\components\Seo\SeoBehavior;
 use paulzi\adjacencyList\AdjacencyListBehavior;
+use common\components\Seo\SeoBehavior;
+use common\components\Image\ImageNameBehavior;
 use Yii;
 
 class Category extends AppModel
@@ -34,6 +35,9 @@ class Category extends AppModel
             ],
             'ImageBehave' => [
                 'class' => ImageBehave::class,
+            ],
+            'ImageNameBehavior' => [
+                'class' => ImageNameBehavior::class,
             ],
             'AdjacencyListBehavior' => [
                 'class' => AdjacencyListBehavior::class,

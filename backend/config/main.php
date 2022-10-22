@@ -24,6 +24,9 @@ return [
         'page' => [
             'class' => 'backend\modules\page\Module',
         ],
+        'goods' => [
+            'class' => 'backend\modules\goods\Module',
+        ],
     ],
     'components' => [
         'view' => [

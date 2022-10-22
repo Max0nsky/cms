@@ -1,5 +1,7 @@
 <?php
 
+use common\models\Category;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -21,13 +23,33 @@ use yii\widgets\ActiveForm;
                         <div class="row">
                             <div class="col-sm-9">
                                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                                <?=
+                                $form->field($model, 'category_id')->widget(Select2::class, [
+                                    'data' => Category::getListForSelect('name'),
+                                    'options' => ['placeholder' => 'Выберите категорию'],
+                                    'pluginOptions' => [
+                                        'allowClear' => true,
+                                        'tabindex' => false,
+                                        'tags' => false,
+                                        'tokenSeparators' => [',', ' '],
+                                    ],
+                                ])->label('Категория');
+                                ?>
                                 <?= $form->field($model, 'slug')->textInput(['readonly' => true]) ?>
+
+                                <div class="col-sm-6">
+                                    <?= $form->field($model, 'price')->textInput(['type' => 'number']) ?>
+                                </div>
+                                <div class="col-sm-6">
+                                    <?= $form->field($model, 'old_price')->textInput(['type' => 'number']) ?>
+                                </div>
+
                                 <?= $form->field($model, 'description')->widget(common\widgets\CkeditorSite::class, []) ?>
                             </div>
                             <div class="col-sm-3">
                                 <?= $form->field($model, 'is_public', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
-                                <?= $form->field($model, 'image')->fileInput(['accept' => "image/jpeg, image/png"]) ?>
-                                <?= $this->render('/common/_view_image', compact('model')); ?>
+                                <?= $form->field($model, 'images')->fileInput(['accept' => "image/jpeg, image/png"]) ?>
+                                <?= $this->render('/common/_view_images', compact('model')); ?>
                             </div>
                         </div>
                     </div>

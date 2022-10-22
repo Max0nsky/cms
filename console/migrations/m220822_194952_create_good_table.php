@@ -19,6 +19,7 @@ class m220822_194952_create_good_table extends Migration
             'price' => $this->decimal(10, 2),
             'old_price' => $this->decimal(10, 2),
             'category_id' => $this->integer(),
+            'description' => $this->text(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
             'is_public' => $this->integer(1)->defaultValue(0),

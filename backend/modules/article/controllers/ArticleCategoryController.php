@@ -45,11 +45,9 @@ class ArticleCategoryController extends AppController
     {
         $model = new ArticleCategory();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load($this->request->post()) && $model->save()) {
 
-            $model->save();
             $model->uploadImage(UploadedFile::getInstance($model, 'image'));
-
             return $this->redirect(['index']);
         }
 
@@ -62,11 +60,9 @@ class ArticleCategoryController extends AppController
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post())) {
+        if ($model->load($this->request->post()) && $model->save()) {
 
-            $model->save();
             $model->uploadImage(UploadedFile::getInstance($model, 'image'));
-
             return $this->redirect(['update', 'id' => $model->id]);
         }
 

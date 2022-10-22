@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
                             </div>
                             <div class="col-sm-3">
                                 <?= $form->field($model, 'is_public', ['options' => ['class' => 'form-group cust-checkbox'], 'template' => '<label> {input} <span class="cust-checkbox__box"></span> Опубликовать</label>'])->checkbox([], false);  ?>
-                                <?= $form->field($model, 'image')->fileInput() ?>
+                                <?= $form->field($model, 'image')->fileInput(['accept' => "image/jpeg, image/png"]) ?>
                                 <?= $this->render('/common/_view_image', compact('model')); ?>
                             </div>
                         </div>
