@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\filters\auth\HttpBasicAuth;
 use yii\web\Response;
 use Yii;
+use yii\filters\auth\HttpBearerAuth;
 
 class Module extends \yii\base\Module
 {
@@ -23,15 +24,8 @@ class Module extends \yii\base\Module
         $behaviors = parent::behaviors();
 
         $behaviors['authenticator'] = [
-            'class' => HttpBasicAuth::class,
-            'auth' => function ($username, $password) {
-                $user = User::find()->where(['username' => $username])->one();
-                if ($user && $user->validatePassword($password)) {
-                    return $user;
-                }
-                return null;
-            },
-        ];
+            'class' => HttpBearerAuth::class   
+        ]; 
 
         $behaviors['access'] = [
 			'class' => AccessControl::class,
