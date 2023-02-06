@@ -61,7 +61,7 @@ return [
             'errorAction' => 'site/error',
         ],
 
-        'urlManagerFrontend' => $frontend_config['components']['urlManagerFrontend'],
+        'urlManagerFrontend' => $frontend_config['components']['urlManager'],
 
         'request' => [
             'baseUrl' => '/admin',

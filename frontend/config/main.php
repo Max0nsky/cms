@@ -10,6 +10,11 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'api' => [
+            'class' => 'frontend\modules\api\Module',
+        ],
+    ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -33,21 +38,33 @@ return [
                 ],
             ],
         ],
+        
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
 
         'request' => [
             'baseUrl' => '',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+              ],
         ],
 
-        'urlManagerFrontend' => [
-            'baseUrl' => '',
+        'urlManager' => [
+            'baseUrl' => '/',
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '' => 'site/index',
+                '/' => 'site/index',
+                'abc' => 'abc/index',
+                
+                [
+                    'class' => 'yii\rest\UrlRule', 
+                    'controller' => 'article',
+                    'pluralize' => false
+                ],
+
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ]
