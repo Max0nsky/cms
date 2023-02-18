@@ -21,8 +21,6 @@ class Module extends \yii\base\Module
     {
         $behaviors = parent::behaviors();
 
-        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
-
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class   
         ]; 
