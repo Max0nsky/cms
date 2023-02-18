@@ -57,13 +57,14 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => 'site/index',
-                'abc' => 'abc/index',
                 
                 [
                     'class' => 'yii\rest\UrlRule', 
                     'controller' => 'article',
                     'pluralize' => false
                 ],
+                'GET article/index' => 'article/index',
+                'GET article/<id:\d+>' => 'article/view',
 
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
